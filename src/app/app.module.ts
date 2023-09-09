@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { FootmenuComponent } from './footmenu/footmenu.component';
 import { LeftmenuComponent } from './leftmenu/leftmenu.component';
 import { AppRoutingModule } from './app-routing.module';
+import { InheaderComponent } from './inheader/inheader.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { AppRoutingModule } from './app-routing.module';
     AuthenticationComponent,
     HeaderComponent,
     FootmenuComponent,
-    LeftmenuComponent
+    LeftmenuComponent,
+    InheaderComponent
   ],
   imports: [
     BrowserModule,

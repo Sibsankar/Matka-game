@@ -25,7 +25,11 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/bootstrap.bundle.min.js",
+              "src/assets/js/tiny-slider.js",
+              "src/assets/js/active.js"
+            ]
           },
           "configurations": {
             "production": {
