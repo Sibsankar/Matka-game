@@ -8,6 +8,9 @@ import { FootmenuComponent } from './footmenu/footmenu.component';
 import { LeftmenuComponent } from './leftmenu/leftmenu.component';
 import { AppRoutingModule } from './app-routing.module';
 import { InheaderComponent } from './inheader/inheader.component';
+import { CalcuttaMatkaComponent } from './calcutta-matka/calcutta-matka.component';
+import { GameResultComponent } from './game-result/game-result.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { InheaderComponent } from './inheader/inheader.component';
     HeaderComponent,
     FootmenuComponent,
     LeftmenuComponent,
-    InheaderComponent
+    InheaderComponent,
+    CalcuttaMatkaComponent,
+    GameResultComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
