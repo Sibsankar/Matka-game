@@ -61,7 +61,7 @@
               <form action="" method="POST" *ngIf="loginHtml">
              
                   <div class="form-group mb-0 rupee-symball mt-1">
-                    <input type="email" class="form-control1" name="email" id="email" placeholder="Email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required autofocus>
+                    <input type="email" class="form-control1" name="email" id="email" [(ngModel)]="loginformdata.email" placeholder="Email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required autofocus>
                    
                         <span class="invalid-feedback">
                             <strong></strong>
@@ -69,12 +69,12 @@
                   
                   </div>
                   <div class="form-group mb-0 rupee-symball mt-1">
-                    <input type="password" class="form-control1" name="password" placeholder="Password" required autofocus>
+                    <input type="password" class="form-control1" name="password" [(ngModel)]="loginformdata.password" placeholder="Password" required autofocus>
                   </div>
                
             <div class="add-money text-center">
               <!--<form action="#" method="GET">-->
-                <button class="request-balance btn btn-primary" type="submit">Login</button>
+                <button class="request-balance btn btn-primary" (click)="login()" type="button">Login</button>
               <!--</form>-->
             </div>
             </form>

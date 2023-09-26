@@ -4,11 +4,12 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 import { CalcuttaMatkaComponent } from './calcutta-matka/calcutta-matka.component';
 import { GameResultComponent } from './game-result/game-result.component';
 import {ContactComponent} from './contact/contact.component'
+import { AuthguardGuard } from './authguard.guard';
 
 const routes: Routes = [
   { path: '', component: AuthenticationComponent },
   { path: 'login', component: AuthenticationComponent },
-  { path: 'calcutta-matka', component: CalcuttaMatkaComponent },
+  { path: 'calcutta-matka', component: CalcuttaMatkaComponent, canActivate: [AuthguardGuard], data: { name: 'calcutta-matka' } },
   { path: 'game-result', component: GameResultComponent },
   { path: 'contact', component: ContactComponent },
 ]
