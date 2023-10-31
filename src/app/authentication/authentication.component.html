@@ -82,28 +82,35 @@
             <form action="" method="POST" *ngIf="registerHtml">
              
                   <div class="form-group mb-0 rupee-symball mt-1">
-                    <input type="text" class="form-control1" name="name" placeholder="Your Name" required autofocus>
+                    <input type="text" class="form-control1" name="name" [(ngModel)]="otpformdata.name" placeholder="Your Name" required autofocus>
                   </div>
+                  <span *ngIf="isname" style="color:red;">Please enter name</span>
                   <div class="form-group mb-0 rupee-symball mt-1">
-                    <input type="email" class="form-control1" name="email" id="email" placeholder="Email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required autofocus>
-                    <button onclick="sendOTP();" class="request-balance btn btn-primary" type="button">Send OTP</button>
+                    <input type="email" class="form-control1" name="email" [(ngModel)]="otpformdata.email" id="email" placeholder="Email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required autofocus>
                     <br>
-                    <span id="otp_div" style="color:green;display:none;">OTP send to your email</span>
+                    <span *ngIf="isemail" style="color:red;">Please enter email</span>
+                    <button (click)="sendOTP();" class="request-balance btn btn-primary" type="button">Send OTP</button>
+                    <br>
+                    <span id="otp_div" *ngIf="otpSent" style="color:green;">OTP send to your email</span>
                   </div>
                   <input type="hidden" id="otp" name="otp" value="" />
                   <div class="form-group mb-0 rupee-symball mt-1">
-                    <input type="text" class="form-control1" name="otp_val" placeholder="OTP" required autofocus>
+                    <input type="text" class="form-control1" name="otp" [(ngModel)]="regiterformdata.otp" placeholder="OTP" required autofocus>
                   </div>
+                  <span  style="color:red;" *ngIf="isotp">Please enter OTP</span>
                   <div class="form-group mb-0 rupee-symball mt-1">
-                    <input type="text" class="form-control1" name="password" placeholder="Password" required autofocus>
+                    <input type="text" class="form-control1" name="password" [(ngModel)]="regiterformdata.password" placeholder="Password" required autofocus>
                   </div>
+                  <span *ngIf="ispassword"  style="color:red;">Please enter password</span>
                   <div class="form-group mb-0 rupee-symball mt-1">
-                    <input type="text" class="form-control1" name="confirm_password" placeholder="Confirm Password" required autofocus>
+                    <input type="text" class="form-control1" name="c_password" [(ngModel)]="regiterformdata.c_password" placeholder="Confirm Password" required autofocus>
                   </div>
+                  <span *ngIf="isconfpassword" style="color:red;">Please enter confirm password</span>
+                  <span *ngIf="mismatchpassword" style="color:red;">Password and confirm password does not matched</span>
                 
             <div class="add-money text-center">
               <!--<form action="#" method="GET">-->
-                <button class="request-balance btn btn-primary" type="submit">CREATE MY ACCOUNT</button>
+                <button class="request-balance btn btn-primary" (click)="createAccount();" type="button">CREATE MY ACCOUNT</button>
               <!--</form>-->
             </div>
             </form>
