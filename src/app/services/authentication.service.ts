@@ -32,6 +32,11 @@ export class AuthenticationService {
 
   }
 
+  getUserDetails(data: any): Observable<any> {
+    return this.http.post<any>(this.URL + 'getUserDetails', data);
+
+  }
+
   login2(email: string, password: string) {
     console.log("helllo");
     var isAuthenticate;
