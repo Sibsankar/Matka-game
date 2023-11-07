@@ -13,6 +13,7 @@ import { CalcuttaMatkaComponent } from './calcutta-matka/calcutta-matka.componen
 import { GameResultComponent } from './game-result/game-result.component';
 import { ContactComponent } from './contact/contact.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     InheaderComponent,
     CalcuttaMatkaComponent,
     GameResultComponent,
-    ContactComponent
+    ContactComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
