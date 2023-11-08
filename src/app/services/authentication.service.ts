@@ -12,7 +12,8 @@ export class AuthenticationService {
  
   httpOptions = {
     headers: new HttpHeaders({
-      Authorization: this.CookieService.get('auth_key')
+      Authorization: this.CookieService.get('auth_key'),
+      'Access-Control-Allow-Origin': '*'
     })
   };
 
@@ -25,6 +26,15 @@ export class AuthenticationService {
 
   login(data: any): Observable<any> {
     return this.http.post<any>(this.URL + 'login', data);
+
+  }
+  
+  sendOtp(data: any): Observable<any> {
+    return this.http.post<any>(this.URL + 'sendOTP', data, this.httpOptions);
+
+  }
+  register(data: any): Observable<any> {
+    return this.http.post<any>(this.URL + 'register', data, this.httpOptions);
 
   }
   Customerlogin(data: any): Observable<any> {

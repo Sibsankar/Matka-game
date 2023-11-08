@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute  } from '@angular/router'; 
 import { MatkaGameService } from '../services/matka-game.service';
+import { AuthenticationService } from '../services/authentication.service';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-calcutta-matka',

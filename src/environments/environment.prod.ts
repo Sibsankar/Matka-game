@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  angApiUrl: 'https://matka.aquivertech.in/game/api/',
+  //projectBaseURL: '',
 };
