@@ -31,7 +31,7 @@ export class LeftmenuComponent implements OnInit {
         if(v.success){
          this.userName=v.success.userDetails.name;
          console.log('Login UserName - ',this.userName);
-          this.router.navigate(['/calcutta-matka']);
+          //this.router.navigate(['/calcutta-matka']);
         }
         
       },

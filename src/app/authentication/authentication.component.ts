@@ -78,7 +78,7 @@ public registerHtml=false;
           //localStorage.setItem('email',v.);
           localStorage.setItem('isAuthenticate','true');
           localStorage.setItem('token',v.success.tokenid);
-          this.router.navigate(['/calcutta-matka']);
+          this.router.navigate(['/dashboard']);
         }
         
       },
