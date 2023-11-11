@@ -16,9 +16,14 @@ export class CalcuttaMatkaComponent implements OnInit {
   public error_msg = false;
   public errorMsg = '';
   public leagueData = [];
+  public gamesData = [];
+  currentDate = new Date();
+
+  public leagueId = this.route.snapshot.paramMap.get('id');
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    console.log('id=====',id);
+    
+   
+    this.getGames();
     this.getLigues();
   }
   getLigues(){
@@ -47,6 +52,39 @@ export class CalcuttaMatkaComponent implements OnInit {
       
     });
 
+
+
+  }
+
+
+  getGames(){
+    console.log('Game id --------',this.leagueId);
+
+    this.CalcuttaMatkaService.getGames(this.leagueId).subscribe({
+      next: (v) => {
+        console.log('Games Data - ',v.data);
+        if(v.data.gamesData){          
+         this.gamesData=v.data.gamesData;
+
+        console.log('gamesData Data - ',this.gamesData);
+        }
+        
+        
+      },
+      error: (e) => {        
+          if(e.status==400){
+            this.error_msg = true;
+            this.errorMsg = "Not Found";
+          }
+          if(e.status==401){
+            localStorage.clear();
+            this.error_msg = true;
+            this.errorMsg = "Not authorised";
+          }
+      },
+      complete: () => console.info('complete'),
+      
+    });
 
 
   }

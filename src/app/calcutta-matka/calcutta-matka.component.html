@@ -44,30 +44,8 @@
               </div>
             </div>
           </div>
-          <!-- Single Hero Slide -->
-          <!-- <div> 
-            <div class="single-hero-slide bg-overlay" style="background-image: url('assets/img/bg-img/31.jpg')">
-              <div class="h-100 d-flex align-items-center text-center">
-               
-              </div>
-            </div>
-          </div> -->
-          <!-- Single Hero Slide -->
-          <div> 
-            <div class="single-hero-slide bg-overlay" style="background-image: url('assets/img/bg-img/31.jpg')">
-              <div class="h-100 d-flex align-items-center text-center">
-                
-              </div>
-            </div>
-          </div>
-          <!-- Single Hero Slide -->
-          <div>
-            <div class="single-hero-slide bg-overlay" style="background-image: url('assets/img/bg-img/31.jpg')">
-              <div class="h-100 d-flex align-items-center text-center">
-               
-              </div>
-            </div>
-          </div>
+          
+         
         </div>
         </div>
       </div>
@@ -78,7 +56,7 @@
 			<div class="row ">
 			<div class="col-sm-12">
 
-				<div class="bg-white px-3 py-3 common-box play-game" *ngFor="let league of leagueData ;  let i = index">
+				<div class="bg-white px-3 py-3 common-box play-game" *ngFor="let games of gamesData ;  let i = index">
 				<div class="row">
 				<div class="col-8">
 					<div class="kolkata-fatafat">
@@ -86,16 +64,17 @@
 					<div class="d-flex">
 						<div class="fatafat-icon"><img src="assets/img/kolkata-fatafat-icon.png"></div>
 						<div class="heading">
-						<h6 class="align-middle m-0">{{ league['title'] }}</h6>
-						<span class="baji">11:31 am-01:30 pm</span>
+						<h6 class="align-middle m-0">{{ games['title'] }}</h6>
+						<span class="baji">{{games['start_time'] | date:'hh:mm a'}}-{{games['end_time'] | date:'hh:mm a'}}</span>
 						</div>
 						</div>
 					</div>
 				</div>
 				<div class="col-4 text-center pl-0">
-					<a class="close" href="#">Close</a>
-					<!--<a class="play" href="#">Play</a>
-					<a class="off" href="#">Off</a-->
+          
+					<a *ngIf="games['status']==1" class="off" href="#">Coming Soon</a>
+					<a class="play" *ngIf="games['status']==2" href="#">Game Over</a>
+					<!--<a class="off" href="#">Off</a-->
 				</div>
 				</div>
 				</div>

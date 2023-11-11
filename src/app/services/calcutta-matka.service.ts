@@ -27,4 +27,9 @@ export class CalcuttaMatkaService {
     return this.http.get<any>(this.URL + 'get-leagues', this.httpOptions);
 
   }
+
+  getGames(data: any): Observable<any> {
+    return this.http.get<any>(this.URL + 'get-games-by-league/'+data);
+
+  }
 }

@@ -32,4 +32,6 @@ export class DashboardService {
     return this.http.get<any>(this.URL + 'getpageText', this.httpOptions);
 
   }
+ 
+  
 }

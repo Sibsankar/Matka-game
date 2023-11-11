@@ -21,10 +21,8 @@ export class DashboardComponent implements OnInit {
     this.getLigues();
     this.getPageText();
   }
-  getGame(getGame:any){
-    console.log('getGame------',getGame);
-
-  }
+  
+  
   getPageText(){
     this.DashboardService.getpageText().subscribe({
       next: (v) => {
