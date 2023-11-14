@@ -22,6 +22,14 @@ export class LeftmenuComponent implements OnInit {
     this.getUserdetails();
   }
 
+  logout(){
+    console.log('Logout');
+    localStorage.setItem('email','');  
+    localStorage.setItem('token','');   
+    localStorage.setItem('isAuthenticate','false');
+    this.router.navigate(['/login']);
+  }
+
   getUserdetails(){
     console.log('token',this.userToken);
     

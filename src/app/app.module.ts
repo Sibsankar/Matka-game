@@ -14,6 +14,9 @@ import { GameResultComponent } from './game-result/game-result.component';
 import { ContactComponent } from './contact/contact.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AddMoneyComponent } from './add-money/add-money.component';
+import { BalanceComponent } from './balance/balance.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     CalcuttaMatkaComponent,
     GameResultComponent,
     ContactComponent,
-    DashboardComponent
+    DashboardComponent,
+    AddMoneyComponent,
+    BalanceComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

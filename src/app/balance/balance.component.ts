@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute  } from '@angular/router'; 
 import { AuthenticationService } from '../services/authentication.service';
 
-
 @Component({
-  selector: 'app-inheader',
-  templateUrl: './inheader.component.html',
-  styleUrls: ['./inheader.component.css']
+  selector: 'app-balance',
+  templateUrl: './balance.component.html',
+  styleUrls: ['./balance.component.css']
 })
-export class InheaderComponent implements OnInit {
+export class BalanceComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute, private AuthGuardService: AuthenticationService) { }
   public error_msg = false;

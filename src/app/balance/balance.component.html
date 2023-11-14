@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <app-header></app-header>
+  <body>
+    <app-inheader></app-inheader>
+    <app-leftmenu></app-leftmenu>
+    <div class="page-content-wrapper inner-page-white">
+        <div class="container">
+        <div class="row">
+         <div class="card">
+              <div class="card-body">
+    
+                <div class="total-balance mt-3 text-center">
+                  <p class="">TOTAL BALANCE</p>
+                   <h4>₹{{ this.wallet_money }}</h4>
+                   <a class="btn m-1 btn-success" routerLink="/add-money">Add Cash</a>
+                </div>
+                     <div class="amount-added border-top mt-3 pt-2 text-left">
+                         <p class="mb-2">Amount Added (Unutilised)</p>
+                         <h4>₹0</h4>
+                     </div>
+                     <div class="amount-added border-top mt-3 pt-2 text-left">
+                         <p class="mb-2">Winnings</p>
+                         <h4>₹6</h4>
+                     </div>
+                    <div class="amount-added border-top mt-3 pt-2 text-left">
+                         <p class="mb-2">Cash Bonus</p>
+                         <h4>₹20</h4>
+                     </div>
+                
+                
+                
+                
+                
+              </div>
+            </div>
+         </div>
+         
+        </div>
+          
+          
+          
+          
+          
+        </div>
+    <app-footmenu></app-footmenu>
+  </body>
+</html>
