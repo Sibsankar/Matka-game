@@ -75,6 +75,7 @@
 					<a *ngIf="games['status']==1" class="off" href="#">Coming Soon</a>
 					<a class="play" *ngIf="games['status']==2" href="#">Game Over</a>
 					<!--<a class="off" href="#">Off</a-->
+						<h6 class="align-middle m-0">{{ games['start_time'] | countdown | async | json }} </h6>
 				</div>
 				</div>
 				</div>

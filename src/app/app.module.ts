@@ -17,6 +17,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddMoneyComponent } from './add-money/add-money.component';
 import { BalanceComponent } from './balance/balance.component';
 import { SettingsComponent } from './settings/settings.component';
+import { TimerpipePipe } from './timerpipe.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SettingsComponent } from './settings/settings.component';
     DashboardComponent,
     AddMoneyComponent,
     BalanceComponent,
-    SettingsComponent
+    SettingsComponent,
+    TimerpipePipe
   ],
   imports: [
     BrowserModule,
