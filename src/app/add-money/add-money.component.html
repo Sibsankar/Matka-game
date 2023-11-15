@@ -25,40 +25,40 @@
                 <div class="add-money mt-3 text-center">
                   <h4>ENTER AMOUNT</h4>
                   <div class="form-group mb-0 rupee-symball">
-                    <input class="form-control1" id="exampleInputText" type="text" placeholder="Enter digit">
+                    <input class="form-control1" id="exampleInputText" [(ngModel)]="addMoneyFormData.amount"  type="text" placeholder="Enter digit">
                     <img src="assets/img/rupee-icon.png"/>
                   </div>
                 </div>
-                <div class="add-money mt-3 text-center">
+                <div class="add-money mt-3 text-center" >
                   <h4>ENTER TXN NUMBER</h4>
                   <div class="form-group mb-0 rupee-symball">
-                    <input class="form-control1" id="exampleInputText" type="text" placeholder="Txn Ref No">
+                    <input class="form-control1" id="exampleInputText" [(ngModel)]="addMoneyFormData.txn_number" type="text" placeholder="Txn Ref No">
                   </div>
                 </div>
-                <div class="add-money mt-3 text-center">
+                <div class="add-money mt-3 text-center"  >
                   <h4>SELECT TRANFAR MODE</h4>
-                 <ul class="d-flex p-0">
+                 <ul class="d-flex p-0" style="margin-left: 173px;">
                   <li>
                     <div class="form-check">
-                        <input class="form-check-input form-check-danger" type="radio" name="exampleRadio" id="dangerRadio">
+                        <input class="form-check-input form-check-danger" value="Bank Account" type="radio" [(ngModel)]="addMoneyFormData.transfer_mode" name="transfer_mode" >
                         <label class="form-check-label" for="dangerRadio">Bank Account</label>
                     </div>
                   </li>
                   <li>
                     <div class="form-check">
-                        <input class="form-check-input form-check-danger" type="radio" name="exampleRadio" id="dangerRadio">
+                        <input class="form-check-input form-check-danger" value="GPay"  type="radio" [(ngModel)]="addMoneyFormData.transfer_mode" name="transfer_mode" >
                         <label class="form-check-label" for="dangerRadio">GPay</label>
                     </div>
                   </li>
                   <li>
                     <div class="form-check">
-                        <input class="form-check-input form-check-danger" type="radio" name="exampleRadio" id="dangerRadio">
+                        <input class="form-check-input form-check-danger" value="PhonePe"  type="radio" [(ngModel)]="addMoneyFormData.transfer_mode" name="transfer_mode" >
                         <label class="form-check-label" for="dangerRadio">PhonePe</label>
                     </div>
                   </li>
                   <li>
                     <div class="form-check">
-                        <input class="form-check-input form-check-danger" type="radio" name="exampleRadio" id="dangerRadio">
+                        <input class="form-check-input form-check-danger" value="UPI"  type="radio" [(ngModel)]="addMoneyFormData.transfer_mode" name="transfer_mode" >
                         <label class="form-check-label" for="dangerRadio">UPI</label>
                     </div>
                   </li>
@@ -71,7 +71,7 @@
                       <input class="form-control d-none" id="customFile" type="file">
                       <!--<label class="form-file-label justify-content-center" for="customFile"><span class="form-file-button btn btn-primary shadow w-100">Upload Screenshot</span></label>-->
                     </div>
-                    <button class="request-balance btn btn-primary" type="button">REQUEST BALANCE</button>
+                    <button class="request-balance btn btn-primary" type="button" (click)="addMoneyToWallet()">REQUEST BALANCE</button>
                     
                   </form>
                   
