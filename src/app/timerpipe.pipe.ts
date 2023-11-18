@@ -13,7 +13,16 @@ export class TimerpipePipe implements PipeTransform {
      * @param   futureDate: string
      * @returns number  milliseconds remaining
      */
-    private getMsDiff = (futureDate: string): number => (+(new Date(futureDate)) - Date.now());
+    private getMsDiff (futureDate: string, endDate: string): number {
+        
+        if (endDate && ((+(new Date(endDate)) - Date.now()) < 0)) {
+            console.log('eeend', endDate);
+            return 0.01;
+        } else {
+            return (+(new Date(futureDate)) - Date.now());
+        }
+       
+    } 
 
     /**
      * Converts milliseconds to the
@@ -26,7 +35,12 @@ export class TimerpipePipe implements PipeTransform {
     private msToTime(msRemaining: number): string | null {
         if (msRemaining < 0) {
             console.info('No Time Remaining:', msRemaining);
-            return null;
+            return 'Play';
+        }
+
+        if (msRemaining == 0.01) {
+            console.info('end Time Remaining:', msRemaining);
+            return 'Game Over';
         }
 
         let seconds: string | number = Math.floor((msRemaining / 1000) % 60),
@@ -49,7 +63,7 @@ export class TimerpipePipe implements PipeTransform {
      *                      e.g. YYYY-MM-DDTHH:mm:ss.msz
      *                      e.g. 2021-06-04T17:27:10.740z
      */
-    public transform(futureDate: string): Observable<any> {
+    public transform(futureDate: string, endDate: string): Observable<any> {
         /**
          * Initial check to see if time remaining is in the future
          * If not, don't bother creating an observable
@@ -59,7 +73,7 @@ export class TimerpipePipe implements PipeTransform {
         // }
         return timer(0, 1000).pipe(
             map(() => {
-                return this.msToTime(this.getMsDiff(futureDate));
+                return this.msToTime(this.getMsDiff(futureDate, endDate));
             })
         );
     }

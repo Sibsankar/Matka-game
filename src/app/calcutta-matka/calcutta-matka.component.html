@@ -72,10 +72,10 @@
 				</div>
 				<div class="col-4 text-center pl-0">
           
-					<a *ngIf="games['status']==1" class="off" href="#">Coming Soon</a>
+					<!-- <a *ngIf="games['status']==1" class="off" href="#">Coming Soon</a>
 					<a class="play" *ngIf="games['status']==2" href="#">Game Over</a>
-					<!--<a class="off" href="#">Off</a-->
-					<h6 class="align-middle m-0">{{ games['start_time'] | countdown | async }} </h6>
+					<a class="off" href="#">Off</a> -->
+					<a class="text-black off">{{ games['start_time'] | countdown : games['end_time'] | async }} </a>
 				</div>
 				</div>
 				</div>
