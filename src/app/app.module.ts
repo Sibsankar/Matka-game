@@ -18,6 +18,7 @@ import { AddMoneyComponent } from './add-money/add-money.component';
 import { BalanceComponent } from './balance/balance.component';
 import { SettingsComponent } from './settings/settings.component';
 import { TimerpipePipe } from './timerpipe.pipe';
+import { GameComponentComponent } from './game-component/game-component.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { TimerpipePipe } from './timerpipe.pipe';
     AddMoneyComponent,
     BalanceComponent,
     SettingsComponent,
-    TimerpipePipe
+    TimerpipePipe,
+    GameComponentComponent
   ],
   imports: [
     BrowserModule,

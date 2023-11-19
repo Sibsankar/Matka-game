@@ -75,7 +75,8 @@
 					<!-- <a *ngIf="games['status']==1" class="off" href="#">Coming Soon</a>
 					<a class="play" *ngIf="games['status']==2" href="#">Game Over</a>
 					<a class="off" href="#">Off</a> -->
-					<a class="text-black off">{{ games['start_time'] | countdown : games['end_time'] | async }} </a>
+					<a *ngIf="(games['start_time'] | countdown : games['end_time'] | async) == 'Play'" href="/play-game/{{ games['id'] }}" class="text-black off">{{ games['start_time'] | countdown : games['end_time'] | async }} </a>
+					<a *ngIf="(games['start_time'] | countdown : games['end_time'] | async) != 'Play'" class="text-black off">{{ games['start_time'] | countdown : games['end_time'] | async }} </a>
 				</div>
 				</div>
 				</div>
