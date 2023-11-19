@@ -13,7 +13,7 @@ export class TimerpipePipe implements PipeTransform {
      * @param   futureDate: string
      * @returns number  milliseconds remaining
      */
-    private getMsDiff (futureDate: string, endDate: string): number {
+    private getMsDiff (futureDate: string, endDate?: string): number {
         
         if (endDate && ((+(new Date(endDate)) - Date.now()) < 0)) {
             console.log('eeend', endDate);
@@ -63,7 +63,7 @@ export class TimerpipePipe implements PipeTransform {
      *                      e.g. YYYY-MM-DDTHH:mm:ss.msz
      *                      e.g. 2021-06-04T17:27:10.740z
      */
-    public transform(futureDate: string, endDate: string): Observable<any> {
+    public transform(futureDate: string, endDate?: string): Observable<any> {
         /**
          * Initial check to see if time remaining is in the future
          * If not, don't bother creating an observable
