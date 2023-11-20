@@ -70,7 +70,8 @@
             <td>{{ singleBids['start_time'] }}</td>
             <td>{{ singleBids['digit'] }}</td>
             <td>{{ singleBids['price'] }}</td>
-            <td>{{ singleBids['status'] }}</td>
+            <td *ngIf="singleBids['winning_amount']"> WIN </td>
+            <td *ngIf="singleBids['result_status']"> LOSE </td>
           </tr>
           
         </tbody>
@@ -95,7 +96,8 @@
             <td>{{ jodiBids['start_time'] }}</td>
             <td>{{ jodiBids['digit'] }}</td>
             <td>{{ jodiBids['price'] }}</td>
-            <td>{{ jodiBids['status'] }}</td>
+            <td *ngIf="jodiBids['winning_amount']"> WIN </td>
+            <td *ngIf="jodiBids['result_status']"> LOSE </td>
           </tr>
           
         </tbody>
@@ -120,7 +122,18 @@
             <td>{{ pannaBids['start_time'] }}</td>
             <td>{{ pannaBids['digit'] }}</td>
             <td>{{ pannaBids['price'] }}</td>
-            <td>{{ pannaBids['status'] }}</td>
+
+            <ng-template #thenTemplateName>
+              WIN
+          </ng-template>
+          
+          <ng-template #elseTemplateName>
+              LOSE
+          </ng-template>
+
+
+            <td *ngIf="pannaBids['winning_amount']"> WIN </td>
+            <td *ngIf="pannaBids['result_status']"> LOSE </td>
           </tr>
           
         </tbody>

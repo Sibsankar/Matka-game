@@ -20,6 +20,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { TimerpipePipe } from './timerpipe.pipe';
 import { WithdrawMoneyComponent } from './withdraw-money/withdraw-money.component';
 import { MyBidComponent } from './my-bid/my-bid.component';
+import { GameComponentComponent } from './game-component/game-component.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MyBidComponent } from './my-bid/my-bid.component';
     SettingsComponent,
     TimerpipePipe,
     WithdrawMoneyComponent,
-    MyBidComponent
+    MyBidComponent,
+    GameComponentComponent
   ],
   imports: [
     BrowserModule,

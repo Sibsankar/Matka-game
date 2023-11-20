@@ -52,78 +52,11 @@
       <div class="pt-3"></div>
 		<div class="container">
 			<h4 class="main-heading">Today's Game</h4>
-			
+			<p class="text-danger text-center h6"><strong>{{ gamesData.title }} - Closed in <i class="fa fa-clock-o" aria-hidden="true"></i> {{ gamesData['end_time'] | countdown | async }}</strong></p>
 			<div class="row ">
-			<div class="col-sm-12">
-
-				<div class="bg-white px-3 py-3 common-box play-game" *ngFor="let games of gamesData ;  let i = index">
-				<div class="row">
-				<div class="col-8">
-					<div class="kolkata-fatafat">
-					
-					<div class="d-flex">
-						<div class="fatafat-icon"><img src="assets/img/kolkata-fatafat-icon.png"></div>
-						<div class="heading">
-						<h6 class="align-middle m-0">{{ games['title'] }}</h6>
-						<span class="baji">{{games['start_time'] | date:'hh:mm a'}}-{{games['end_time'] | date:'hh:mm a'}}</span>
-						</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-4 text-center pl-0">
-          
-					<!-- <a *ngIf="games['status']==1" class="off" href="#">Coming Soon</a>
-					<a class="play" *ngIf="games['status']==2" href="#">Game Over</a>
-					<a class="off" href="#">Off</a> -->
-					<a *ngIf="(games['start_time'] | countdown : games['end_time'] | async) == 'Play'" href="/play-game/{{ games['id'] }}" class="text-black off">{{ games['start_time'] | countdown : games['end_time'] | async }} </a>
-					<a *ngIf="(games['start_time'] | countdown : games['end_time'] | async) != 'Play'" class="text-black off">{{ games['start_time'] | countdown : games['end_time'] | async }} </a>
-				</div>
-				</div>
-				</div>
+			    <div class="col-sm-12">
+                    
 				
-				<!-- <div class="bg-white px-3 py-3 common-box play-game">
-				<div class="row">
-				<div class="col-8">
-					<div class="kolkata-fatafat">
-					
-					<div class="d-flex">
-						<div class="fatafat-icon"><img src="assets/img/kolkata-fatafat-icon.png"></div>
-						<div class="heading">
-						<h6 class="align-middle m-0">Kolkata Fatafat</h6>
-						<span class="baji">11:31 am-01:30 pm</span>
-						</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-4 text-center pl-0">
-					<a class="close" href="#">Close</a>
-					<a class="play" href="#">Play</a>
-					<a class="off" href="#">Off</a>
-				</div>
-				</div>
-				</div> -->
-				
-				<!-- <div class="bg-white px-3 py-3 common-box play-game">
-				<div class="row">
-				<div class="col-8">
-					<div class="kolkata-fatafat">
-					
-					<div class="d-flex">
-						<div class="fatafat-icon"><img src="assets/img/kolkata-fatafat-icon.png"></div>
-						<div class="heading">
-						<h6 class="align-middle m-0">Kolkata Fatafat</h6>
-						<span class="baji">11:31 am-01:30 pm</span>
-						</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-4 text-center pl-0">
-					<a class="close" href="#">Close</a>
-					<a class="play" href="#">Play</a>
-					<a class="off" href="#">Off</a>
-				</div>
-				</div>
-				</div> -->
 
 				</div>
 			</div>

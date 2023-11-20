@@ -11,6 +11,7 @@ import { AddMoneyComponent } from './add-money/add-money.component';
 import { SettingsComponent } from './settings/settings.component';
 import { WithdrawMoneyComponent } from './withdraw-money/withdraw-money.component';
 import { MyBidComponent } from './my-bid/my-bid.component';
+import { GameComponentComponent } from './game-component/game-component.component';
 
 const routes: Routes = [
   { path: '', component: AuthenticationComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'game-result', component: GameResultComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'game/:name/:id', component: CalcuttaMatkaComponent, canActivate: [AuthguardGuard], data: { name: 'game' } },
+  { path: 'play-game/:id', component: GameComponentComponent, canActivate: [AuthguardGuard], data: { name: 'game-details' } },
   { path: 'balance', component: BalanceComponent, canActivate: [AuthguardGuard], data: { name: 'balance' } },
   { path: 'add-money', component: AddMoneyComponent, canActivate: [AuthguardGuard], data: { name: 'add-money' } },
   { path: 'settings', component: SettingsComponent, canActivate: [AuthguardGuard], data: { name: 'settings' } },
