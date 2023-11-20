@@ -9,6 +9,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BalanceComponent } from './balance/balance.component';
 import { AddMoneyComponent } from './add-money/add-money.component';
 import { SettingsComponent } from './settings/settings.component';
+import { WithdrawMoneyComponent } from './withdraw-money/withdraw-money.component';
+import { MyBidComponent } from './my-bid/my-bid.component';
 
 const routes: Routes = [
   { path: '', component: AuthenticationComponent },
@@ -21,6 +23,8 @@ const routes: Routes = [
   { path: 'balance', component: BalanceComponent, canActivate: [AuthguardGuard], data: { name: 'balance' } },
   { path: 'add-money', component: AddMoneyComponent, canActivate: [AuthguardGuard], data: { name: 'add-money' } },
   { path: 'settings', component: SettingsComponent, canActivate: [AuthguardGuard], data: { name: 'settings' } },
+  { path: 'withdraw-money', component: WithdrawMoneyComponent, canActivate: [AuthguardGuard], data: { name: 'withdraw-money' } },
+  { path: 'my-bid', component: MyBidComponent, canActivate: [AuthguardGuard], data: { name: 'my-bid' } },
 ]
 
 @NgModule({

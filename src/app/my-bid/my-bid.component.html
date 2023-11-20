@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <app-header></app-header>
+  <body>
+    <app-inheader></app-inheader>
+    <app-leftmenu></app-leftmenu>
+    <div class="page-content-wrapper">
+      
+     
+      
+     
+      <div class="pt-3"></div>
+		<div class="container">
+			
+			
+			<div class="row ">
+			<div class="col-sm-12" *ngIf="leaguetable">
+                <h4 class="main-heading">Leagues</h4>
+
+				<div class="bg-white px-3 py-3 common-box play-game" *ngFor="let league of leagueData ;  let i = index">
+				<div class="row">
+				<div class="col-8">
+					<div class="kolkata-fatafat">
+					
+					<div class="d-flex" >
+						<div class="fatafat-icon" style="width: 10%;"><img src="https://matka.aquivertech.in/game/public/uploads/leagues/{{ league['image'] }}"></div>
+						<div class="heading">
+						<h6 class="align-middle m-0">{{ league['title'] }}</h6>
+						<!-- <span class="baji">11:31 am-01:30 pm</span> -->
+						</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-4 text-center pl-0">
+          <h6 class="align-middle m-0">{{ league['location'] }}</h6>
+					<!-- <a class="close" href="#">Close</a> -->
+					<!-- <a class="play" href="javascript:void(0)" (click)="getGame(league)">Play</a> -->
+          <!-- <a class="play" href="/game/{{ league['title'] }}/{{ league['id'] }}">BIDS</a> -->
+         <button class="btn btn-success " type="button" (click)="getBids(league['id']);">BIDS</button>
+					<!--<a class="off" href="#">Off</a-->
+				</div>
+				</div>
+				</div>
+				
+				
+
+				</div>
+<div class="col-sm-12" *ngIf="bid_table">
+    <button class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-90deg-left" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z"/>
+      </svg></button>
+    <h1>Single Bids</h1>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">League Title</th>
+            <th scope="col">Game</th>
+            <th scope="col">Start Time</th>
+            <th scope="col">Digit</th>
+            <th scope="col">Price</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+
+
+          <tr *ngFor="let singleBids of single_bidData ;  let i = index">
+            <th scope="row">{{ singleBids['leagues_title'] }}</th>
+            <td>{{ singleBids['game_title'] }}</td>
+            <td>{{ singleBids['start_time'] }}</td>
+            <td>{{ singleBids['digit'] }}</td>
+            <td>{{ singleBids['price'] }}</td>
+            <td>{{ singleBids['status'] }}</td>
+          </tr>
+          
+        </tbody>
+      </table>
+
+      <h1>Jodi Bids</h1>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">League Title</th>
+            <th scope="col">Game</th>
+            <th scope="col">Start Time</th>
+            <th scope="col">Digit</th>
+            <th scope="col">Price</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let jodiBids of jodi_bidData ;  let i = index">
+            <th scope="row">{{ jodiBids['leagues_title'] }}</th>
+            <td>{{ jodiBids['game_title'] }}</td>
+            <td>{{ jodiBids['start_time'] }}</td>
+            <td>{{ jodiBids['digit'] }}</td>
+            <td>{{ jodiBids['price'] }}</td>
+            <td>{{ jodiBids['status'] }}</td>
+          </tr>
+          
+        </tbody>
+      </table>
+
+      <h1>Panna Bids</h1>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">League Title</th>
+            <th scope="col">Game</th>
+            <th scope="col">Start Time</th>
+            <th scope="col">Digit</th>
+            <th scope="col">Price</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pannaBids of panna_bidData ;  let i = index">
+            <th scope="row">{{ pannaBids['leagues_title'] }}</th>
+            <td>{{ pannaBids['game_title'] }}</td>
+            <td>{{ pannaBids['start_time'] }}</td>
+            <td>{{ pannaBids['digit'] }}</td>
+            <td>{{ pannaBids['price'] }}</td>
+            <td>{{ pannaBids['status'] }}</td>
+          </tr>
+          
+        </tbody>
+      </table>
+</div>
+
+			</div>
+		</div>
+    </div>
+    <app-footmenu></app-footmenu>
+  </body>
+</html>
