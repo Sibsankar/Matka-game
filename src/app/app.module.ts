@@ -1,6 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatDatepickerModule } from '@angular/material/datepicker';
+import {MatNativeDateModule } from '@angular/material/core';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+
 
 import { AppComponent } from './app.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
@@ -21,6 +30,9 @@ import { TimerpipePipe } from './timerpipe.pipe';
 import { WithdrawMoneyComponent } from './withdraw-money/withdraw-money.component';
 import { MyBidComponent } from './my-bid/my-bid.component';
 import { GameComponentComponent } from './game-component/game-component.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -46,7 +58,15 @@ import { GameComponentComponent } from './game-component/game-component.componen
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatTabsModule,
+    MatPaginatorModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatIconModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

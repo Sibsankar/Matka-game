@@ -1,0 +1,12 @@
+.win-td{
+    font-weight: bold;
+    background-color: #00FF00;
+}
+.lose-td{
+    font-weight: bold;
+    background-color: #FF0000;
+}
+.pending-td{
+    font-weight: bold;
+    background-color: #FFFF00;
+}

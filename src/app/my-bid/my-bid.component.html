@@ -70,8 +70,9 @@
             <td>{{ singleBids['start_time'] }}</td>
             <td>{{ singleBids['digit'] }}</td>
             <td>{{ singleBids['price'] }}</td>
-            <td *ngIf="singleBids['winning_amount']"> WIN </td>
-            <td *ngIf="singleBids['result_status']"> LOSE </td>
+            <td class="win-td" *ngIf="singleBids['status']==1 && singleBids['winning_amount']"> WIN </td>
+            <td class="lose-td" *ngIf="!singleBids['winning_amount'] && singleBids['status']==1 && singleBids['result_status']!=0"> LOSE </td>
+            <td class="pending-td" *ngIf="!singleBids['winning_amount'] && singleBids['result_status']==0"> Result Pending </td>
           </tr>
           
         </tbody>
@@ -96,9 +97,10 @@
             <td>{{ jodiBids['start_time'] }}</td>
             <td>{{ jodiBids['digit'] }}</td>
             <td>{{ jodiBids['price'] }}</td>
-            <td *ngIf="jodiBids['winning_amount']"> WIN </td>
-            <td *ngIf="jodiBids['result_status']"> LOSE </td>
-          </tr>
+            <td class="win-td" *ngIf="jodiBids['status']==1 && jodiBids['winning_amount']"> WIN </td>
+            <td class="lose-td" *ngIf="!jodiBids['winning_amount'] && jodiBids['status']==1 && jodiBids['result_status']!=0"> LOSE </td>
+            <td class="pending-td" *ngIf="!jodiBids['winning_amount'] && jodiBids['result_status']==0"> Result Pending </td>
+         </tr>
           
         </tbody>
       </table>
@@ -123,17 +125,12 @@
             <td>{{ pannaBids['digit'] }}</td>
             <td>{{ pannaBids['price'] }}</td>
 
-            <ng-template #thenTemplateName>
-              WIN
-          </ng-template>
-          
-          <ng-template #elseTemplateName>
-              LOSE
-          </ng-template>
+            
 
 
-            <td *ngIf="pannaBids['winning_amount']"> WIN </td>
-            <td *ngIf="pannaBids['result_status']"> LOSE </td>
+            <td class="win-td" *ngIf="pannaBids['status']==1 && pannaBids['winning_amount']"> WIN </td>
+            <td class="lose-td" *ngIf="!pannaBids['winning_amount'] && pannaBids['status']==1 && pannaBids['result_status']!=0"> LOSE </td>
+            <td class="pending-td" *ngIf="!pannaBids['winning_amount'] && pannaBids['result_status']==0"> Result Pending </td>
           </tr>
           
         </tbody>

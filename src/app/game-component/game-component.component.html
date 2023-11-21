@@ -25,41 +25,37 @@
       </div>
       </div>
       
-      <div class="tiny-slider-one-wrapper">
-       <div class="container">
-        <div class="tiny-slider-one">
-          <!-- Single Hero Slide -->
-          <!-- <div>
-            <div class="single-hero-slide bg-overlay" style="background-image: url('assets/img/bg-img/31.jpg')">
-              <div class="h-100 d-flex text-center">
-                
-              </div>
-            </div>
-          </div> -->
-          <!-- Single Hero Slide -->
-          <div>
-            <div class="single-hero-slide bg-overlay" style="background-image: url('assets/img/bg-img/31.jpg')">
-              <div class="h-100 d-flex align-items-center text-center">
-               
-              </div>
-            </div>
-          </div>
-          
-         
-        </div>
-        </div>
-      </div>
-      <div class="pt-3"></div>
+      
+     
 		<div class="container">
 			<h4 class="main-heading">Today's Game</h4>
-			<p class="text-danger text-center h6"><strong>{{ gamesData.title }} - Closed in <i class="fa fa-clock-o" aria-hidden="true"></i> {{ gamesData['end_time'] | countdown | async }}</strong></p>
-			<div class="row ">
-			    <div class="col-sm-12">
-                    
-				
-
-				</div>
-			</div>
+			<p class="text-danger text-center h6"></p>
+			<mat-tab-group>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+            First
+          </ng-template>
+          Content 1
+        </mat-tab>
+      
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+            Second
+          </ng-template>
+          Content 2
+        </mat-tab>
+      
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+            Third
+          </ng-template>
+      
+          Content 3
+        </mat-tab>
+      </mat-tab-group>
 		</div>
     </div>
     <app-footmenu></app-footmenu>

@@ -5,10 +5,13 @@ import { AuthenticationService } from '../services/authentication.service';
 import { GameService } from '../services/game.service';
 import { Observable, of } from 'rxjs';
 
+
+
 @Component({
   selector: 'app-game-component',
   templateUrl: './game-component.component.html',
-  styleUrls: ['./game-component.component.css']
+  styleUrls: ['./game-component.component.css'], 
+  
 })
 export class GameComponentComponent implements OnInit {
 

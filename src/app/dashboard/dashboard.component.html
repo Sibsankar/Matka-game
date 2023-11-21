@@ -93,10 +93,10 @@
 					</div>
 				</div>
 				<div class="col-4 text-center pl-0">
-          <h6 class="align-middle m-0">{{ league['location'] }}</h6>
+          <h6 class="align-middle m-0">{{ league['location'] }}</h6> 
 					<!-- <a class="close" href="#">Close</a> -->
 					<!-- <a class="play" href="javascript:void(0)" (click)="getGame(league)">Play</a> -->
-          <a class="play" href="/game/{{ league['title'] }}/{{ league['id'] }}">Play</a>
+          <a class="play" routerLink="/game/{{ league['title'] }}/{{ league['id'] }}" >Play</a>
 					<!--<a class="off" href="#">Off</a-->
 				</div>
 				</div>
