@@ -9,7 +9,7 @@ import {MatDatepickerModule } from '@angular/material/datepicker';
 import {MatNativeDateModule } from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
-
+import {MatInputModule} from '@angular/material/input';
 
 import { AppComponent } from './app.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
@@ -65,6 +65,7 @@ import { GameComponentComponent } from './game-component/game-component.componen
     MatNativeDateModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatInputModule,
     MatIconModule,
     BrowserAnimationsModule
   ],

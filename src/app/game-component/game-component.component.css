@@ -1,10 +1,28 @@
-#exTab2 h3 {
-    color : white;
-    background-color: #428bca;
-    padding : 5px 15px;
-  }
-  .example-tab-icon {
-    margin-right: 8px;
-  }
+.game-sec {
+  width: 100%;
+} 
+.tab-label {
+  color: black;
+  font-weight: bold;
+}
+.mat-tab-label-active {
+  background-color: #032250;
+}
+.mat-tab-label-active .tab-label {
+  color: #FFFF;
+}
+
+
+/* Styles for the active tab label */
+.mat-tab-label.mat-tab-label-active {
+
+    background-color: #0b428f;
+    color: red;
+    font-weight: 700;
+}
+
+.game-close{
   
-  
+  font-size: x-large;
+  color: crimson;
+}

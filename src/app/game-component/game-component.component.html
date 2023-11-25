@@ -19,41 +19,60 @@
         <button class="btn btn-close btn-close-white position-absolute p-1" type="button" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>-->
       <!-- Tiny Slider One Wrapper -->
-      <div class="container">
-      <div class="news">
-      	<marquee>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</marquee>
-      </div>
-      </div>
+      
       
       
      
 		<div class="container">
-			<h4 class="main-heading">Today's Game</h4>
+			<p class="main-heading text-center game-close">{{ gamesData.title }}:  Closed in <i class="fa fa-clock-o" aria-hidden="true"></i> {{ gamesData['end_time'] | countdown | async }}</p>
+      <p class="text-danger text-center h6"><strong></strong></p>
 			<p class="text-danger text-center h6"></p>
 			<mat-tab-group>
         <mat-tab>
-          <ng-template mat-tab-label>
-            <mat-icon class="example-tab-icon">thumb_up</mat-icon>
-            First
+          <ng-template mat-tab-label nnn>
+            <div class="tab-label">Play Single</div>
           </ng-template>
-          Content 1
+          <div class="row game-sec">
+            <div class="col-6">
+              <input type="number" name="" class="form-control" value="" placeholder="Enter Digit">
+            </div>
+            <div class="col-6">
+              <input type="number" name="" class="form-control" value="" placeholder="Enter Rs.">
+            </div>
+            <button class="btn btn-success">Add BET</button>
+          </div>
         </mat-tab>
       
         <mat-tab>
           <ng-template mat-tab-label>
-            <mat-icon class="example-tab-icon">thumb_up</mat-icon>
-            Second
+            <!-- <mat-icon class="example-tab-icon">thumb_up</mat-icon> -->
+            <div class="tab-label">Play Panna</div>
           </ng-template>
-          Content 2
+          <div class="row game-sec">
+            <div class="col-6">
+              <input type="number" name="" class="form-control" value="" placeholder="Enter Digit">
+            </div>
+            <div class="col-6">
+              <input type="number" name="" class="form-control" value="" placeholder="Enter Rs.">
+            </div>
+            <button class="btn btn-success">Add BET</button>
+          </div>
         </mat-tab>
       
         <mat-tab>
           <ng-template mat-tab-label>
-            <mat-icon class="example-tab-icon">thumb_up</mat-icon>
-            Third
+            <div class="tab-label">Play Jodi</div>
           </ng-template>
       
-          Content 3
+          <div class="row game-sec">
+            <div class="col-6">
+              <input type="number" name="" class="form-control" value="" placeholder="Enter Digit">
+            </div>
+            <div class="col-6">
+              <input type="number" name="" class="form-control" value="" placeholder="Enter Rs.">
+            </div>
+            <button class="btn btn-success">Add BET</button>
+          </div>
         </mat-tab>
       </mat-tab-group>
 		</div>

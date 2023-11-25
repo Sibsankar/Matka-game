@@ -1,0 +1,9 @@
+.off-success {
+	cursor: pointer;position: relative;padding: 10px 20px;border-radius: 3.75rem;font-size: 14px;font-weight: 600;border: 1px solid #884000;background-image: linear-gradient(-180deg, #ff999f 0%, #e0212c 100%);background-image: linear-gradient(-180deg, #f6e9af 0%, #0ade11 100%);
+box-shadow: 0 1rem 1.25rem 0 rgba(22, 98, 195, 0.5),0 -0.25rem 1.5rem rgb(16, 100, 23) inset, 0 0.75rem 0.5rem rgba(255,255,255, 0.4) inset, 0 0.25rem 0.5rem 0 rgb(153, 80, 1) inset;color: #222;text-transform: uppercase;display: block;
+}
+
+.off-over {
+	cursor: pointer;position: relative;padding: 10px 20px;border-radius: 3.75rem;font-size: 14px;font-weight: 600;border: 1px solid #884000;background-image: linear-gradient(-180deg, #ff999f 0%, #e0212c 100%);
+box-shadow: 0 1rem 1.25rem 0 rgba(22, 98, 195, 0.5),0 -0.25rem 1.5rem rgb(123, 3, 25) inset, 0 0.75rem 0.5rem rgba(255,255,255, 0.4) inset, 0 0.25rem 0.5rem 0 rgb(153, 80, 1) inset;color: #222;text-transform: uppercase;display: block;
+}

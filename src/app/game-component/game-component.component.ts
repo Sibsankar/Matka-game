@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute  } from '@angular/router'; 
 import { MatkaGameService } from '../services/matka-game.service';
 import { AuthenticationService } from '../services/authentication.service';
@@ -11,6 +11,7 @@ import { Observable, of } from 'rxjs';
   selector: 'app-game-component',
   templateUrl: './game-component.component.html',
   styleUrls: ['./game-component.component.css'], 
+  encapsulation: ViewEncapsulation.None
   
 })
 export class GameComponentComponent implements OnInit {
