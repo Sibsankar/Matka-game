@@ -24,22 +24,48 @@
       
      
 		<div class="container">
-			<p class="main-heading text-center game-close">{{ gamesData.title }}:  Closed in <i class="fa fa-clock-o" aria-hidden="true"></i> {{ gamesData['end_time'] | countdown | async }}</p>
+			<p class="main-heading text-center game-close" *ngIf="(gamesData['end_time'] | countdown | async) != 'Play'">{{ gamesData.title }}:  Closed in  {{ gamesData['end_time'] | countdown | async }}</p>
+      <p class="main-heading text-center game-close" *ngIf="(gamesData['end_time'] | countdown | async) == 'Play'">{{ gamesData.title }}:  Closed </p>
       <p class="text-danger text-center h6"><strong></strong></p>
 			<p class="text-danger text-center h6"></p>
 			<mat-tab-group>
         <mat-tab>
-          <ng-template mat-tab-label nnn>
+          <ng-template mat-tab-label>
             <div class="tab-label">Play Single</div>
           </ng-template>
+          <hr>
           <div class="row game-sec">
             <div class="col-6">
-              <input type="number" name="" class="form-control" value="" placeholder="Enter Digit">
+              <input type="number" class="form-control" [(ngModel)]="playSingleForm.digit" placeholder="Enter Digit">
             </div>
             <div class="col-6">
-              <input type="number" name="" class="form-control" value="" placeholder="Enter Rs.">
+              <input type="number" class="form-control" [(ngModel)]="playSingleForm.price" placeholder="Enter Rs.">
             </div>
-            <button class="btn btn-success">Add BET</button>
+            <div class="col-12"><button class="btn btn-success bet-btn" *ngIf="(gamesData['end_time'] | countdown | async) != 'Play'" (click)="playSingle()">ADD BET</button></div>
+            <hr>
+            <div class="col-12" *ngIf="bidTab">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Sl.no.</th>
+                    <th scope="col">Digit</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let eachBid of bidDataSingle ;  let i = index">
+                    <th scope="row">{{ i+1 }}</th>
+                    <td>{{ eachBid['digit'] }}</td>
+                    <td>{{ eachBid['price'] }}</td>
+                    <td><a class="text-danger" (click)="bidDelete(eachBid['id'], 'single')" >X</a> </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+              <hr>
+              <div class="col-12"><button class="btn btn-success bet-btn" *ngIf="(gamesData['end_time'] | countdown | async) != 'Play'" (click)="playnow('single')">PLAY NOW</button></div>
+            </div>
           </div>
         </mat-tab>
       
@@ -48,14 +74,39 @@
             <!-- <mat-icon class="example-tab-icon">thumb_up</mat-icon> -->
             <div class="tab-label">Play Panna</div>
           </ng-template>
+          <hr>
           <div class="row game-sec">
             <div class="col-6">
-              <input type="number" name="" class="form-control" value="" placeholder="Enter Digit">
+              <input type="number" name="" class="form-control" [(ngModel)]="playPannaForm.digit" placeholder="Enter Digit">
             </div>
             <div class="col-6">
-              <input type="number" name="" class="form-control" value="" placeholder="Enter Rs.">
+              <input type="number" name="" class="form-control" [(ngModel)]="playPannaForm.price" placeholder="Enter Rs.">
             </div>
-            <button class="btn btn-success">Add BET</button>
+            <div class="col-12"><button class="btn btn-success bet-btn" *ngIf="(gamesData['end_time'] | countdown | async) != 'Play'" (click)="playPanna()">ADD BET</button></div>
+            <hr>
+            <div class="col-12" *ngIf="bidTab">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Sl.no.</th>
+                    <th scope="col">Digit</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let eachBid of bidDataPanna ;  let i = index">
+                    <th scope="row">{{ i+1 }}</th>
+                    <td>{{ eachBid['digit'] }}</td>
+                    <td>{{ eachBid['price'] }}</td>
+                    <td><a class="text-danger" (click)="bidDelete(eachBid['id'], 'panna')" >X</a> </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+              <hr>
+              <div class="col-12"><button class="btn btn-success bet-btn" *ngIf="(gamesData['end_time'] | countdown | async) != 'Play'" (click)="playnow('panna')">PLAY NOW</button></div>
+            </div>
           </div>
         </mat-tab>
       
@@ -63,15 +114,39 @@
           <ng-template mat-tab-label>
             <div class="tab-label">Play Jodi</div>
           </ng-template>
-      
+          <hr>
           <div class="row game-sec">
             <div class="col-6">
-              <input type="number" name="" class="form-control" value="" placeholder="Enter Digit">
+              <input type="number" name="" class="form-control" [(ngModel)]="playJodiForm.digit" placeholder="Enter Digit">
             </div>
             <div class="col-6">
-              <input type="number" name="" class="form-control" value="" placeholder="Enter Rs.">
+              <input type="number" name="" class="form-control" [(ngModel)]="playJodiForm.price" placeholder="Enter Rs.">
             </div>
-            <button class="btn btn-success">Add BET</button>
+            <div class="col-12"><button class="btn btn-success bet-btn" *ngIf="(gamesData['end_time'] | countdown | async) != 'Play'" (click)="playJodi()">ADD BET</button></div>
+            <hr>
+            <div class="col-12" *ngIf="bidTab">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Sl.no.</th>
+                    <th scope="col">Digit</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let eachBid of bidDataJodi ;  let i = index">
+                    <th scope="row">{{ i+1 }}</th>
+                    <td>{{ eachBid['digit'] }}</td>
+                    <td>{{ eachBid['price'] }}</td>
+                    <td><a class="text-danger" (click)="bidDelete(eachBid['id'], 'jodi')" >X</a> </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+              <hr>
+              <div class="col-12"><button class="btn btn-success bet-btn" *ngIf="(gamesData['end_time'] | countdown | async) != 'Play'" (click)="playnow('jodi')">PLAY NOW</button></div>
+            </div>
           </div>
         </mat-tab>
       </mat-tab-group>
