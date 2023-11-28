@@ -37,6 +37,10 @@ export class GameService {
     return this.http.post<any>(this.URL + 'jodibidsave', data, this.httpOptions);
   }
 
+  playGameCP(data: any): Observable<any> {
+    return this.http.post<any>(this.URL + 'cpbidsave', data, this.httpOptions);
+  }
+
   getBidList(data: any): Observable<any> {
     return this.http.post<any>(this.URL + 'getbidList', data, this.httpOptions);
   }

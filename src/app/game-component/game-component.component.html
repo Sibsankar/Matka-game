@@ -149,6 +149,46 @@
             </div>
           </div>
         </mat-tab>
+
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <div class="tab-label">Play CP</div>
+          </ng-template>
+          <hr>
+          <div class="row game-sec">
+            <div class="col-6">
+              <input type="number" name="" class="form-control" [(ngModel)]="playCPForm.digit" placeholder="Enter Four, Five, or Six-Digit Number">
+            </div>
+            <div class="col-6">
+              <input type="number" name="" class="form-control" [(ngModel)]="playCPForm.price" placeholder="Enter Rs.">
+            </div>
+            <div class="col-12"><button class="btn btn-success bet-btn" *ngIf="(gamesData['end_time'] | countdown | async) != 'Play'" (click)="playCP()">ADD BET</button></div>
+            <hr>
+            <div class="col-12" *ngIf="bidTab">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Sl.no.</th>
+                    <th scope="col">Digit</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let eachBid of bidDataCP ;  let i = index">
+                    <th scope="row">{{ i+1 }}</th>
+                    <td>{{ eachBid['digit'] }}</td>
+                    <td>{{ eachBid['price'] }}</td>
+                    <td><a class="text-danger" (click)="bidDelete(eachBid['id'], 'cp')" >X</a> </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+              <hr>
+              <div class="col-12"><button class="btn btn-success bet-btn" *ngIf="(gamesData['end_time'] | countdown | async) != 'Play'" (click)="playnow('cp')">PLAY NOW</button></div>
+            </div>
+          </div>
+        </mat-tab>
       </mat-tab-group>
 		</div>
     </div>

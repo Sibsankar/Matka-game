@@ -25,6 +25,7 @@ export class GameComponentComponent implements OnInit {
   public bidDataSingle = [];
   public bidDataPanna = [];
   public bidDataJodi = [];
+  public bidDataCP = [];
   public bidTab = false;
   public gameId = this.route.snapshot.paramMap.get('id');
   public playSingleForm = {
@@ -40,6 +41,12 @@ export class GameComponentComponent implements OnInit {
     token: localStorage.getItem('token')
   }
   public playJodiForm = {
+    game_id: this.gameId,
+    price: '',
+    digit: '',
+    token: localStorage.getItem('token')
+  }
+  public playCPForm = {
     game_id: this.gameId,
     price: '',
     digit: '',
@@ -113,6 +120,11 @@ export class GameComponentComponent implements OnInit {
           console.log('jbiddata', v.data.jodibids);
           this.bidDataJodi = v.data.jodibids;
         }
+        if(v.data.cpbids){
+          console.log('cpbiddata', v.data.cpbids);
+          this.bidDataCP = v.data.cpbids;
+        }
+        
       },
       error: (e) => {
         console.log(e.status);
@@ -225,6 +237,52 @@ export class GameComponentComponent implements OnInit {
           this.playJodiForm.price = '';
           this.getBidLists();
           this.router.navigate(['/play-game/'+this.gameId]);
+        }
+        
+      },
+      error: (e) => {
+        console.log(e.status);
+        console.log(e.status);
+          if(e.status==400){
+            this.error_msg = true;
+            this.errorMsg = "Something went wrong";
+          }
+          if(e.status==401){
+            localStorage.clear();
+            this.error_msg = true;
+            this.errorMsg = "Something went wrong";
+          }
+      },
+      complete: () => console.info('complete'),
+      
+    });
+  }
+
+  playCP() {
+    console.log(this.playCPForm);
+    
+    this.GameService.playGameCP(this.playCPForm).subscribe({
+      next: (v) => {
+        console.log(v.data.insertedData);
+        if(v.data.status == 'success'){
+          if(v.data.insertedData){
+            console.log(v.success);
+            Swal.fire({
+              title: "Success",
+              text: v.data.msg,
+              icon: "success"
+            });
+            this.playCPForm.digit = '';
+            this.playCPForm.price = '';
+            this.getBidLists();
+            this.router.navigate(['/play-game/'+this.gameId]);
+          }
+        } else {
+          Swal.fire({
+            title: "Error",
+            text: v.data.msg,
+            icon: "error"
+          });
         }
         
       },
