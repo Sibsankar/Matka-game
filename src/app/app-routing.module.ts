@@ -15,6 +15,7 @@ import { GameComponentComponent } from './game-component/game-component.componen
 import { UpdateAccountComponent } from './update-account/update-account.component';
 import { DipositHistoryComponent} from './diposit-history/diposit-history.component';
 import { WithdrawHistoryComponent } from  './withdraw-history/withdraw-history.component'
+import { GameTimingsComponent } from './game-timings/game-timings.component'
 
 const routes: Routes = [
   { path: '', component: AuthenticationComponent },
@@ -33,6 +34,8 @@ const routes: Routes = [
   { path: 'update-account', component: UpdateAccountComponent, canActivate: [AuthguardGuard], data: { name: 'update-account' } },
   { path: 'withdraw-history', component: WithdrawHistoryComponent, canActivate: [AuthguardGuard], data: { name: 'withdraw-history' } },
   { path: 'deposit-history', component: DipositHistoryComponent, canActivate: [AuthguardGuard], data: { name: 'deposit-history' } },
+  { path: 'game-timings', component: GameTimingsComponent, canActivate: [AuthguardGuard], data: { name: 'game-timings' } },
+
 ]
 
 @NgModule({

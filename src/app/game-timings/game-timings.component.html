@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <app-header></app-header>
+  <body>
+    <app-inheader></app-inheader>
+    <app-leftmenu></app-leftmenu>
+    
+        <div class="page-content-wrapper py-3 settings">
+          <div class="container">
+            <!-- Setting Card-->
+            
+            <!-- Setting Card-->
+            <div class="card mb-3 shadow-sm">
+              <div class="card-body direction-rtl">
+                <h6>Game Timings</h6>
+                <div class="col-sm-12">
+                   
+                   
+                    <table class="table" style="text-align: center;">
+                        <thead>
+                          <tr>
+                            <th scope="col">Game</th>
+                            <th scope="col">League</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Start Time</th>
+                            <th scope="col">End Time</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                
+                
+                          <tr *ngFor="let games of gameData ;  let i = index">
+                            <th scope="row">{{ games['title'] }}</th>
+                            <td>{{ games['leagues_title'] }}</td>
+                            <td>{{ games['leagues_location'] }}</td>
+                            <td>{{ games['start_time'] | date:'dd/MM/yyyy, hh:mm a' }}</td>
+                            <td>{{ games['end_time'] | date:'dd/MM/yyyy, hh:mm a' }}</td>
+                            
+                            <td class="icon-wrapper bg-success" *ngIf="games['status']==1"><a routerLink="/play-game/{{ games['id'] }}"><i class="bi bi-file-play"></i> Play </a></td>
+                            <td class="icon-wrapper bg-danger" *ngIf="games['status']!==1"><i class="bi bi-backspace"></i> Game Over </td>
+                           
+                            
+                            
+                           
+                          </tr>
+                          
+                        </tbody>
+                       
+                      </table>
+                      <!-- <mat-paginator [length]="100"
+                      [pageSize]="10"
+                      [pageSizeOptions]="[5, 10, 25, 100]"
+                      aria-label="Select page">
+        </mat-paginator> -->
+                
+                </div>
+                  
+                         
+              </div>
+            </div>
+           
+          </div>
+        </div>
+    <app-footmenu></app-footmenu>
+  </body>
+</html>

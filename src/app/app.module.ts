@@ -13,6 +13,7 @@ import {MatInputModule} from '@angular/material/input';
 import {DataTablesModule} from 'angular-datatables';
 
 
+
 import { AppComponent } from './app.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { HeaderComponent } from './header/header.component';
@@ -35,6 +36,7 @@ import { GameComponentComponent } from './game-component/game-component.componen
 import { UpdateAccountComponent } from './update-account/update-account.component';
 import { DipositHistoryComponent } from './diposit-history/diposit-history.component';
 import { WithdrawHistoryComponent } from './withdraw-history/withdraw-history.component';
+import { GameTimingsComponent } from './game-timings/game-timings.component';
 
 
 
@@ -60,7 +62,8 @@ import { WithdrawHistoryComponent } from './withdraw-history/withdraw-history.co
     GameComponentComponent,
     UpdateAccountComponent,
     DipositHistoryComponent,
-    WithdrawHistoryComponent
+    WithdrawHistoryComponent,
+    GameTimingsComponent
   ],
   imports: [
     BrowserModule,
