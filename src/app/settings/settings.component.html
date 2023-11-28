@@ -4,7 +4,7 @@
   <body>
     <app-inheader></app-inheader>
     <app-leftmenu></app-leftmenu>
-    <div class="page-content-wrapper inner-page-white">
+    <!-- <div class="page-content-wrapper inner-page-white">
         <div class="container">
         <div class="row">
          <div class="card">
@@ -17,7 +17,7 @@
                   <form action="#" method="GET">
                     <div class="form-file">
                       <input class="form-control d-none" id="customFile" type="file">
-                      <!--<label class="form-file-label justify-content-center" for="customFile"><span class="form-file-button btn btn-primary shadow w-100">Upload Screenshot</span></label>-->
+                     
                     </div>
                     <a routerLink="/balance"><button class="request-balance btn btn-primary" type="button">Balance</button></a>
                     <a routerLink="/add-money"><button class="request-balance btn btn-success" type="button">Add Money</button></a>
@@ -32,11 +32,50 @@
          </div>
          
         </div>
-          
-          
-          
-          
-          
+         
+        </div> -->
+        <div class="page-content-wrapper py-3 settings">
+          <div class="container">
+            <!-- Setting Card-->
+            
+            <!-- Setting Card-->
+            <div class="card mb-3 shadow-sm">
+              <div class="card-body direction-rtl">
+                <p>Account</p>
+                <div class="single-setting-panel"><a routerLink="/update-account">
+                    <div class="icon-wrapper"><i class="bi bi-person"></i></div>Update Account Details</a></div>
+                <div class="single-setting-panel"><a routerLink="/balance">
+                    <div class="icon-wrapper bg-warning"><i class="bi bi-pencil"></i></div>Balance</a></div>
+                <div class="single-setting-panel"><a routerLink="/add-money">
+                    <div class="icon-wrapper bg-info"><i class="bi bi-lock"></i></div>Add Money</a></div>
+                <div class="single-setting-panel"><a routerLink="/withdraw-money">
+                    <div class="icon-wrapper bg-danger"><i class="bi bi-arrow-up"></i></div>Withdraw Money</a></div>
+                <!-- <div class="single-setting-panel"><a routerLink="/my-bid">
+                    <div class="icon-wrapper bg-info"><i class="bi bi-book"></i></div>Game Bid History</a></div> -->
+                 <div class="single-setting-panel"><a routerLink="/deposit-history">
+                 <div class="icon-wrapper bg-success"><i class="bi bi-arrow-down"></i></div>Deposit History</a></div>
+                 <div class="single-setting-panel"><a routerLink="/withdraw-history">
+                  <div class="icon-wrapper bg-danger"><i class="bi bi-arrow-up"></i></div>Withdraw History</a></div>
+                  <div class="single-setting-panel"><a routerLink="/my-bid">
+                   <div class="icon-wrapper bg-warning"><i class="bi bi-list-check"></i></div>Game Bid History</a></div>
+                   <div class="single-setting-panel"><a href="page-privacy-policy.html">
+                    <div class="icon-wrapper bg-info"><i class="bi bi-clock-history"></i></div>Game Timings</a></div>
+                 <div class="single-setting-panel"><a href="page-privacy-policy.html">
+                    <div class="icon-wrapper bg-info"><i class="bi bi-file-ruled"></i></div>Game Rules & Regulations</a></div>   
+                         
+              </div>
+            </div>
+            <!-- Setting Card-->
+            <div class="card shadow-sm">
+              <div class="card-body direction-rtl">
+                <p>Register &amp; Logout</p>
+                <div class="single-setting-panel"><a href="page-register.html">
+                    <div class="icon-wrapper bg-primary"><i class="bi bi-person"></i></div>Create New Account</a></div>
+                <div class="single-setting-panel"><a href="page-login.html">
+                    <div class="icon-wrapper bg-danger"><i class="bi bi-box-arrow-right"></i></div>Logout</a></div>
+              </div>
+            </div>
+          </div>
         </div>
     <app-footmenu></app-footmenu>
   </body>

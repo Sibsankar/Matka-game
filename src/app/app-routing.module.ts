@@ -12,6 +12,9 @@ import { SettingsComponent } from './settings/settings.component';
 import { WithdrawMoneyComponent } from './withdraw-money/withdraw-money.component';
 import { MyBidComponent } from './my-bid/my-bid.component';
 import { GameComponentComponent } from './game-component/game-component.component';
+import { UpdateAccountComponent } from './update-account/update-account.component';
+import { DipositHistoryComponent} from './diposit-history/diposit-history.component';
+import { WithdrawHistoryComponent } from  './withdraw-history/withdraw-history.component'
 
 const routes: Routes = [
   { path: '', component: AuthenticationComponent },
@@ -27,6 +30,9 @@ const routes: Routes = [
   { path: 'settings', component: SettingsComponent, canActivate: [AuthguardGuard], data: { name: 'settings' } },
   { path: 'withdraw-money', component: WithdrawMoneyComponent, canActivate: [AuthguardGuard], data: { name: 'withdraw-money' } },
   { path: 'my-bid', component: MyBidComponent, canActivate: [AuthguardGuard], data: { name: 'my-bid' } },
+  { path: 'update-account', component: UpdateAccountComponent, canActivate: [AuthguardGuard], data: { name: 'update-account' } },
+  { path: 'withdraw-history', component: WithdrawHistoryComponent, canActivate: [AuthguardGuard], data: { name: 'withdraw-history' } },
+  { path: 'deposit-history', component: DipositHistoryComponent, canActivate: [AuthguardGuard], data: { name: 'deposit-history' } },
 ]
 
 @NgModule({

@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute  } from '@angular/router'; 
+import {Location} from '@angular/common';
 import { AuthenticationService } from '../services/authentication.service';
 import { MyBidService } from '../services/my-bid.service';
 import { Observable, of } from 'rxjs';
@@ -13,7 +14,7 @@ import Swal from 'sweetalert2'
 })
 export class MyBidComponent implements OnInit {
 
-  constructor(private router: Router, private route: ActivatedRoute, private AuthGuardService: AuthenticationService, private MyBidService: MyBidService) { }
+  constructor(private _location: Location, private router: Router, private route: ActivatedRoute, private AuthGuardService: AuthenticationService, private MyBidService: MyBidService) { }
   public error_msg = false;
   public errorMsg = '';
   public leagueData = [];
@@ -33,7 +34,10 @@ export class MyBidComponent implements OnInit {
     this.getLigues();
     this.getPageText();
   }
-  
+  backClicked() {
+    this.getLigues();
+    
+  }
   getBids(leagueId: any){
     console.log('leagueId-----',leagueId);
     Swal.fire({
@@ -121,6 +125,8 @@ export class MyBidComponent implements OnInit {
         Swal.close();
         console.log('Ligue Data - ',this.leagueData);
         }
+        this.bid_table = false;
+    this.leaguetable = true;
         
       },
       error: (e) => {        

@@ -1660,6 +1660,7 @@ span.baji{ /*text-align: center;*/ display: block; font-size: 14px; color: #93ea
 
 .card{ background: none; border: none;}
 .inner-page-white{ background: #fff; height: 100%;border-radius: 8px;}
+.inner-page-white-showbtn{ background: #fff;border-radius: 8px;}
 .table-red{ background: #c61d24;}
 .minimal-tab .add-bet.btn.play-now {width: 100%;
 border-radius: 6px;
@@ -2006,3 +2007,28 @@ h5.help{ background: linear-gradient(-90deg, rgba(58,140,255,1) 0%, rgba(10,64,1
 font-size: 22px;
 color: #fff;
 }
+
+
+
+.game-time ul p{ font-size:18px; padding: 0 5px; margin: 0 0 8px 0; color: #333;}
+td { vertical-align: middle;}
+
+.table > :not(caption) > * > *{ padding:5px 0; line-height: 17px;}
+.login .rupee-symball input{ margin-bottom: 0;}
+
+.login h4{ font-weight: 700; font-size: 25px; margin-bottom: 0;}
+.login .add-money .request-balance{ margin: 0;font-size: 20px;}
+.login p{ font-weight: 400; color: #555; font-size: 17px;}
+
+.login .add-money label{ text-decoration: underline;}
+.update-withdraw-mode.red{ color:#c61d24;}
+
+.change-password li{ margin: 0;font-size: 15px; display: inline-block;}
+.change-password li a{color: #c61d24;}
+.change-password li:first-child{ text-align: left; padding:0 17px 0 0; float: left;color: #c61d24;}
+.change-password li:nth-child(2n){ text-align: right; color: #c61d24;padding:0 0 0 17px;float: right;}
+
+.register .rupee-symball input{ text-align: left; padding: 0 10px; font-size:17px;}
+.register .add-money .request-balance{ margin-top: 5px;}
+
+.settings .card-body{ padding: 1.5em; background: #fff; border-radius: 8px;}

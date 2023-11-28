@@ -10,6 +10,8 @@ import {MatNativeDateModule } from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
+import {DataTablesModule} from 'angular-datatables';
+
 
 import { AppComponent } from './app.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
@@ -30,6 +32,9 @@ import { TimerpipePipe } from './timerpipe.pipe';
 import { WithdrawMoneyComponent } from './withdraw-money/withdraw-money.component';
 import { MyBidComponent } from './my-bid/my-bid.component';
 import { GameComponentComponent } from './game-component/game-component.component';
+import { UpdateAccountComponent } from './update-account/update-account.component';
+import { DipositHistoryComponent } from './diposit-history/diposit-history.component';
+import { WithdrawHistoryComponent } from './withdraw-history/withdraw-history.component';
 
 
 
@@ -52,7 +57,10 @@ import { GameComponentComponent } from './game-component/game-component.componen
     TimerpipePipe,
     WithdrawMoneyComponent,
     MyBidComponent,
-    GameComponentComponent
+    GameComponentComponent,
+    UpdateAccountComponent,
+    DipositHistoryComponent,
+    WithdrawHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +75,8 @@ import { GameComponentComponent } from './game-component/game-component.componen
     MatSelectModule,
     MatInputModule,
     MatIconModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DataTablesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
