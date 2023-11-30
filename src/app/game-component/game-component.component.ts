@@ -26,7 +26,9 @@ export class GameComponentComponent implements OnInit {
   public bidDataPanna = [];
   public bidDataJodi = [];
   public bidDataCP = [];
+  public cpbidNos = [];
   public bidTab = false;
+  public showDigit = true;
   public gameId = this.route.snapshot.paramMap.get('id');
   public playSingleForm = {
     game_id: this.gameId,
@@ -71,6 +73,12 @@ export class GameComponentComponent implements OnInit {
   ngOnInit(): void {
     this.getGame();
     this.getBidLists();
+  }
+
+  onCheckDigit(value: string): any {
+    if(value.length < 4) {
+      return value;
+    }
   }
 
   getGame(){
@@ -276,6 +284,44 @@ export class GameComponentComponent implements OnInit {
             this.playCPForm.price = '';
             this.getBidLists();
             this.router.navigate(['/play-game/'+this.gameId]);
+          }
+        } else {
+          Swal.fire({
+            title: "Error",
+            text: v.data.msg,
+            icon: "error"
+          });
+        }
+        
+      },
+      error: (e) => {
+        console.log(e.status);
+        console.log(e.status);
+          if(e.status==400){
+            this.error_msg = true;
+            this.errorMsg = "Something went wrong";
+          }
+          if(e.status==401){
+            localStorage.clear();
+            this.error_msg = true;
+            this.errorMsg = "Something went wrong";
+          }
+      },
+      complete: () => console.info('complete'),
+      
+    });
+  }
+
+  showCPNos() {
+    console.log(this.playCPForm);
+    
+    this.GameService.showCP(this.playCPForm).subscribe({
+      next: (v) => {
+        console.log(v.data.insertedData);
+        if(v.data.status == 'success'){
+          if(v.data.numbers){
+            console.log('numbers', v.data.numbers);
+            this.cpbidNos = v.data.numbers;
           }
         } else {
           Swal.fire({

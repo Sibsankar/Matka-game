@@ -77,7 +77,7 @@
           <hr>
           <div class="row game-sec">
             <div class="col-6">
-              <input type="number" name="" class="form-control" [(ngModel)]="playPannaForm.digit" placeholder="Enter Digit">
+              <input type="number" name="" class="form-control" minlength="3" maxlength="3" [(ngModel)]="playPannaForm.digit" placeholder="Enter 3-Digit Number">
             </div>
             <div class="col-6">
               <input type="number" name="" class="form-control" [(ngModel)]="playPannaForm.price" placeholder="Enter Rs.">
@@ -117,14 +117,34 @@
           <hr>
           <div class="row game-sec">
             <div class="col-6">
-              <input type="number" name="" class="form-control" [(ngModel)]="playJodiForm.digit" placeholder="Enter Digit">
+              <input type="number" name="" class="form-control" minlength="2" maxlength="2" [(ngModel)]="playJodiForm.digit" placeholder="Enter 2-Digit Number">
             </div>
             <div class="col-6">
               <input type="number" name="" class="form-control" [(ngModel)]="playJodiForm.price" placeholder="Enter Rs.">
             </div>
-            <div class="col-12"><button class="btn btn-success bet-btn" *ngIf="(gamesData['end_time'] | countdown | async) != 'Play'" (click)="playJodi()">ADD BET</button></div>
+            <div class="col-12" *ngIf="showDigit"><button class="btn btn-success bet-btn" *ngIf="(gamesData['end_time'] | countdown | async) != 'Play'" (click)="showCPNos()">SHOW NUMBERS</button></div>
+            <div class="col-12" *ngIf="!showDigit"><button class="btn btn-success bet-btn" *ngIf="(gamesData['end_time'] | countdown | async) != 'Play'" (click)="playJodi()">ADD BET</button></div>
             <hr>
-            <div class="col-12" *ngIf="bidTab">
+            <div class="col-12" *ngIf="!bidTab && showDigit">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Sl.no.</th>
+                    <th scope="col">Digit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let eachBid of cpbidNos ;  let i = index">
+                    <th scope="row">{{ i+1 }}</th>
+                    <td>{{ cpbidNos }}</td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+              <hr>
+              <div class="col-12"><button class="btn btn-success bet-btn" *ngIf="(gamesData['end_time'] | countdown | async) != 'Play'" (click)="playnow('jodi')">PLAY NOW</button></div>
+            </div>
+            <div class="col-12" *ngIf="bidTab  && !showDigit">
               <table class="table">
                 <thead>
                   <tr>
@@ -160,11 +180,31 @@
               <input type="number" name="" class="form-control" [(ngModel)]="playCPForm.digit" placeholder="Enter Four, Five, or Six-Digit Number">
             </div>
             <div class="col-6">
-              <input type="number" name="" class="form-control" [(ngModel)]="playCPForm.price" placeholder="Enter Rs.">
+              <input type="number" name="" *ngIf="!showDigit" class="form-control" [(ngModel)]="playCPForm.price" placeholder="Enter Rs.">
             </div>
-            <div class="col-12"><button class="btn btn-success bet-btn" *ngIf="(gamesData['end_time'] | countdown | async) != 'Play'" (click)="playCP()">ADD BET</button></div>
+            <div class="col-12" *ngIf="showDigit"><button class="btn btn-success bet-btn" *ngIf="(gamesData['end_time'] | countdown | async) != 'Play'" (click)="showCPNos()">SHOW NUMBERS</button></div>
+            <div class="col-12" *ngIf="!showDigit"><button class="btn btn-success bet-btn" *ngIf="(gamesData['end_time'] | countdown | async) != 'Play'" (click)="playCP()">ADD BET</button></div>
             <hr>
-            <div class="col-12" *ngIf="bidTab">
+            <div class="col-12" *ngIf="!bidTab && showDigit">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Sl.no.</th>
+                    <th scope="col">Digit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let eachBid of cpbidNos ;  let i = index">
+                    <th scope="row">{{ i+1 }}</th>
+                    <td>{{ cpbidNos }}</td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+              <hr>
+              <div class="col-12"><button class="btn btn-success bet-btn" *ngIf="(gamesData['end_time'] | countdown | async) != 'Play'" (click)="playnow('jodi')">PLAY NOW</button></div>
+            </div>
+            <div class="col-12" *ngIf="bidTab  && !showDigit">
               <table class="table">
                 <thead>
                   <tr>
