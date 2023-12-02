@@ -28,7 +28,9 @@ export class GameComponentComponent implements OnInit {
   public bidDataCP = [];
   public cpbidNos = [];
   public bidTab = false;
-  public showDigit = true;
+  public showDigit = false;
+  public showCpPrice = false;
+  public showDigitbtn = true;
   public gameId = this.route.snapshot.paramMap.get('id');
   public playSingleForm = {
     game_id: this.gameId,
@@ -75,10 +77,37 @@ export class GameComponentComponent implements OnInit {
     this.getBidLists();
   }
 
-  onCheckDigit(value: string): any {
-    if(value.length < 4) {
-      return value;
+  public twodigit(event: any) {
+    const NUMBER_REGEXP = "\d{2}";
+    let newValue = event.target.value;
+    let regExp = new RegExp(NUMBER_REGEXP);
+
+    if (!regExp.test(newValue)) {
+      event.target.value = newValue.slice(0, 2);
+      this.playJodiForm.digit = event.target.value;
     }
+  }
+  
+  public threedigit(event: any) {
+    const NUMBER_REGEXP = "\d{3}";
+    let newValue = event.target.value;
+    let regExp = new RegExp(NUMBER_REGEXP);
+
+    if (!regExp.test(newValue)) {
+      event.target.value = newValue.slice(0, 3);
+      this.playPannaForm.digit = event.target.value;
+    }
+  }
+
+  clearform() {
+    this.playSingleForm.digit = '';
+    this.playSingleForm.price = '';
+    this.playPannaForm.digit = '';
+    this.playPannaForm.price = '';
+    this.playJodiForm.digit = '';
+    this.playJodiForm.price = '';
+    this.playCPForm.digit = '';
+    this.playCPForm.price = '';
   }
 
   getGame(){
@@ -154,125 +183,22 @@ export class GameComponentComponent implements OnInit {
 
   playSingle(){
     console.log(this.playSingleForm);
-    
-    this.GameService.playGameSingle(this.playSingleForm).subscribe({
-      next: (v) => {
-        console.log(v.data.insertedData);
-        if(v.data.insertedData){
-          console.log(v.success);
-          Swal.fire({
-            title: "Success",
-            text: v.data.msg,
-            icon: "success"
-          });
-          this.playSingleForm.digit = '';
-          this.playSingleForm.price = '';
-          this.getBidLists();
-          this.router.navigate(['/play-game/'+this.gameId]);
-        }
-        
-      },
-      error: (e) => {
-        console.log(e.status);
-        console.log(e.status);
-          if(e.status==400){
-            this.error_msg = true;
-            this.errorMsg = "Something went wrong";
-          }
-          if(e.status==401){
-            localStorage.clear();
-            this.error_msg = true;
-            this.errorMsg = "Something went wrong";
-          }
-      },
-      complete: () => console.info('complete'),
-      
-    });
-  }
-
-  playPanna() {
-    console.log(this.playPannaForm);
-    
-    this.GameService.playGamePanna(this.playPannaForm).subscribe({
-      next: (v) => {
-        console.log(v.data.insertedData);
-        if(v.data.insertedData){
-          console.log(v.success);
-          Swal.fire({
-            title: "Success",
-            text: v.data.msg,
-            icon: "success"
-          });
-          this.playPannaForm.digit = '';
-          this.playPannaForm.price = '';
-          this.getBidLists();
-          this.router.navigate(['/play-game/'+this.gameId]);
-        }
-        
-      },
-      error: (e) => {
-        console.log(e.status);
-        console.log(e.status);
-          if(e.status==400){
-            this.error_msg = true;
-            this.errorMsg = "Something went wrong";
-          }
-          if(e.status==401){
-            localStorage.clear();
-            this.error_msg = true;
-            this.errorMsg = "Something went wrong";
-          }
-      },
-      complete: () => console.info('complete'),
-      
-    });
-  }
-
-  playJodi() {
-    console.log(this.playJodiForm);
-    
-    this.GameService.playGameJodi(this.playJodiForm).subscribe({
-      next: (v) => {
-        console.log(v.data.insertedData);
-        if(v.data.insertedData){
-          console.log(v.success);
-          Swal.fire({
-            title: "Success",
-            text: v.data.msg,
-            icon: "success"
-          });
-          this.playJodiForm.digit = '';
-          this.playJodiForm.price = '';
-          this.getBidLists();
-          this.router.navigate(['/play-game/'+this.gameId]);
-        }
-        
-      },
-      error: (e) => {
-        console.log(e.status);
-        console.log(e.status);
-          if(e.status==400){
-            this.error_msg = true;
-            this.errorMsg = "Something went wrong";
-          }
-          if(e.status==401){
-            localStorage.clear();
-            this.error_msg = true;
-            this.errorMsg = "Something went wrong";
-          }
-      },
-      complete: () => console.info('complete'),
-      
-    });
-  }
-
-  playCP() {
-    console.log(this.playCPForm);
-    
-    this.GameService.playGameCP(this.playCPForm).subscribe({
-      next: (v) => {
-        console.log(v.data.insertedData);
-        if(v.data.status == 'success'){
+    if(this.playSingleForm.digit == '') {
+      Swal.fire({
+        title: "Error",
+        text: 'Enter Digit',
+        icon: "error"
+      });
+    } else if(this.playSingleForm.price == '') {
+      Swal.fire({
+        title: "Error",
+        text: 'Enter Price',
+        icon: "error"
+      });
+    } else {
+      this.GameService.playGameSingle(this.playSingleForm).subscribe({
+        next: (v) => {
+          console.log(v.data.insertedData);
           if(v.data.insertedData){
             console.log(v.success);
             Swal.fire({
@@ -280,74 +206,260 @@ export class GameComponentComponent implements OnInit {
               text: v.data.msg,
               icon: "success"
             });
-            this.playCPForm.digit = '';
-            this.playCPForm.price = '';
+            this.playSingleForm.digit = '';
+            this.playSingleForm.price = '';
             this.getBidLists();
             this.router.navigate(['/play-game/'+this.gameId]);
           }
-        } else {
-          Swal.fire({
-            title: "Error",
-            text: v.data.msg,
-            icon: "error"
-          });
-        }
+          
+        },
+        error: (e) => {
+          console.log(e.status);
+          console.log(e.status);
+            if(e.status==400){
+              this.error_msg = true;
+              this.errorMsg = "Something went wrong";
+            }
+            if(e.status==401){
+              localStorage.clear();
+              this.error_msg = true;
+              this.errorMsg = "Something went wrong";
+            }
+        },
+        complete: () => console.info('complete'),
         
-      },
-      error: (e) => {
-        console.log(e.status);
-        console.log(e.status);
-          if(e.status==400){
-            this.error_msg = true;
-            this.errorMsg = "Something went wrong";
+      });
+    }
+  }
+
+  playPanna() {
+    console.log(this.playPannaForm);
+    if(this.playPannaForm.digit == '') {
+      Swal.fire({
+        title: "Error",
+        text: 'Enter Digit',
+        icon: "error"
+      });
+    } else if(this.playPannaForm.price == '') {
+      Swal.fire({
+        title: "Error",
+        text: 'Enter Price',
+        icon: "error"
+      });
+    } else {
+      this.GameService.playGamePanna(this.playPannaForm).subscribe({
+        next: (v) => {
+          console.log(v.data.insertedData);
+          if(v.data.status == 'success'){
+            if(v.data.insertedData){
+              console.log(v.success);
+              Swal.fire({
+                title: "Success",
+                text: v.data.msg,
+                icon: "success"
+              });
+              this.playPannaForm.digit = '';
+              this.playPannaForm.price = '';
+              this.getBidLists();
+              this.router.navigate(['/play-game/'+this.gameId]);
+            }
+          } else {
+            Swal.fire({
+              title: "Error",
+              text: v.data.msg,
+              icon: "error"
+            });
           }
-          if(e.status==401){
-            localStorage.clear();
-            this.error_msg = true;
-            this.errorMsg = "Something went wrong";
+          
+        },
+        error: (e) => {
+          console.log(e.status);
+          console.log(e.status);
+            if(e.status==400){
+              this.error_msg = true;
+              this.errorMsg = "Something went wrong";
+            }
+            if(e.status==401){
+              localStorage.clear();
+              this.error_msg = true;
+              this.errorMsg = "Something went wrong";
+            }
+        },
+        complete: () => console.info('complete'),
+        
+      });
+    }
+  }
+
+  playJodi() {
+    console.log(this.playJodiForm);
+    if(this.playJodiForm.digit == '') {
+      Swal.fire({
+        title: "Error",
+        text: 'Enter Digit',
+        icon: "error"
+      });
+    } else if(this.playJodiForm.price == '') {
+      Swal.fire({
+        title: "Error",
+        text: 'Enter Price',
+        icon: "error"
+      });
+    } else {
+      this.GameService.playGameJodi(this.playJodiForm).subscribe({
+        next: (v) => {
+          console.log(v.data.insertedData);
+          if(v.data.status == 'success'){
+            if(v.data.insertedData){
+              console.log(v.success);
+              Swal.fire({
+                title: "Success",
+                text: v.data.msg,
+                icon: "success"
+              });
+              this.playJodiForm.digit = '';
+              this.playJodiForm.price = '';
+              this.getBidLists();
+              this.router.navigate(['/play-game/'+this.gameId]);
+            }
+          } else {
+            Swal.fire({
+              title: "Error",
+              text: v.data.msg,
+              icon: "error"
+            });
           }
-      },
-      complete: () => console.info('complete'),
-      
-    });
+          
+        },
+        error: (e) => {
+          console.log(e.status);
+          console.log(e.status);
+            if(e.status==400){
+              this.error_msg = true;
+              this.errorMsg = "Something went wrong";
+            }
+            if(e.status==401){
+              localStorage.clear();
+              this.error_msg = true;
+              this.errorMsg = "Something went wrong";
+            }
+        },
+        complete: () => console.info('complete'),
+        
+      });
+    }
+  }
+
+  playCP() {
+    console.log(this.playCPForm);
+    if(this.playCPForm.digit == '') {
+      Swal.fire({
+        title: "Error",
+        text: 'Enter Digit',
+        icon: "error"
+      });
+    } else if(this.playCPForm.price == '') {
+      Swal.fire({
+        title: "Error",
+        text: 'Enter Price',
+        icon: "error"
+      });
+    } else {
+      this.GameService.playGameCP(this.playCPForm).subscribe({
+        next: (v) => {
+          console.log(v.data.insertedData);
+          if(v.data.status == 'success'){
+            if(v.data.insertedData){
+              console.log(v.success);
+              Swal.fire({
+                title: "Success",
+                text: v.data.msg,
+                icon: "success"
+              });
+              this.playCPForm.digit = '';
+              this.playCPForm.price = '';
+              this.showDigit = false;
+              this.showCpPrice = false;
+              this.getBidLists();
+              this.router.navigate(['/play-game/'+this.gameId]);
+            }
+          } else {
+            Swal.fire({
+              title: "Error",
+              text: v.data.msg,
+              icon: "error"
+            });
+          }
+          
+        },
+        error: (e) => {
+          console.log(e.status);
+          console.log(e.status);
+            if(e.status==400){
+              this.error_msg = true;
+              this.errorMsg = "Something went wrong";
+            }
+            if(e.status==401){
+              localStorage.clear();
+              this.error_msg = true;
+              this.errorMsg = "Something went wrong";
+            }
+        },
+        complete: () => console.info('complete'),
+        
+      });
+    }
+    
+    
   }
 
   showCPNos() {
     console.log(this.playCPForm);
-    
-    this.GameService.showCP(this.playCPForm).subscribe({
-      next: (v) => {
-        console.log(v.data.insertedData);
-        if(v.data.status == 'success'){
-          if(v.data.numbers){
-            console.log('numbers', v.data.numbers);
-            this.cpbidNos = v.data.numbers;
+    if(this.playCPForm.digit == '') {
+      Swal.fire({
+        title: "Error",
+        text: 'Enter Digit',
+        icon: "error"
+      });
+    } else {
+      this.GameService.showCP(this.playCPForm).subscribe({
+        next: (v) => {
+          console.log(v.data.insertedData);
+          if(v.data.status == 'success'){
+            if(v.data.numbers){
+              console.log('numbers', v.data.numbers);
+              this.cpbidNos = v.data.numbers;
+              this.showCpPrice = true;
+              this.showDigitbtn = false;
+              this.showDigit = true;
+            }
+          } else {
+            Swal.fire({
+              title: "Error",
+              text: v.data.msg,
+              icon: "error"
+            });
           }
-        } else {
-          Swal.fire({
-            title: "Error",
-            text: v.data.msg,
-            icon: "error"
-          });
-        }
+          
+        },
+        error: (e) => {
+          console.log(e.status);
+          console.log(e.status);
+            if(e.status==400){
+              this.error_msg = true;
+              this.errorMsg = "Something went wrong";
+            }
+            if(e.status==401){
+              localStorage.clear();
+              this.error_msg = true;
+              this.errorMsg = "Something went wrong";
+            }
+        },
+        complete: () => console.info('complete'),
         
-      },
-      error: (e) => {
-        console.log(e.status);
-        console.log(e.status);
-          if(e.status==400){
-            this.error_msg = true;
-            this.errorMsg = "Something went wrong";
-          }
-          if(e.status==401){
-            localStorage.clear();
-            this.error_msg = true;
-            this.errorMsg = "Something went wrong";
-          }
-      },
-      complete: () => console.info('complete'),
-      
-    });
+      });
+    }
+    
   }
 
   bidDelete(id: any, type: string) {
@@ -399,6 +511,7 @@ export class GameComponentComponent implements OnInit {
             text: v.data.msg,
             icon: "success"
           });
+          this.clearform();
           this.getBidLists();
         } else {
           Swal.fire({
