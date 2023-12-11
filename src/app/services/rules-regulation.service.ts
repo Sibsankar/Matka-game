@@ -2,6 +2,7 @@
 
 
 
+
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -11,7 +12,7 @@ import { CookieService } from 'ngx-cookie-service';
 @Injectable({
   providedIn: 'root'
 })
-export class GameTimingsService {
+export class RulesRegulationService {
 
 
  httpOptions = {
@@ -29,17 +30,8 @@ export class GameTimingsService {
   
 
   
-  getGames(data: any): Observable<any> {
-    return this.http.post<any>(this.URL + 'get-all-games', data, this.httpOptions);
+  getRules(): Observable<any> {
+    return this.http.get<any>(this.URL + 'getpageText', this.httpOptions);
 
   }
-
-  getMatkaResults(data: any): Observable<any> {
-    return this.http.post<any>(this.URL + 'get-games-result-by-league', data, this.httpOptions);
-
-  }
- 
-  
 }
-
-

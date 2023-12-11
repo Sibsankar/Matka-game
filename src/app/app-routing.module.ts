@@ -16,6 +16,7 @@ import { UpdateAccountComponent } from './update-account/update-account.componen
 import { DipositHistoryComponent} from './diposit-history/diposit-history.component';
 import { WithdrawHistoryComponent } from  './withdraw-history/withdraw-history.component'
 import { GameTimingsComponent } from './game-timings/game-timings.component'
+import { RulesRegulationComponent } from './rules-regulation/rules-regulation.component'
 
 const routes: Routes = [
   { path: '', component: AuthenticationComponent },
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'withdraw-history', component: WithdrawHistoryComponent, canActivate: [AuthguardGuard], data: { name: 'withdraw-history' } },
   { path: 'deposit-history', component: DipositHistoryComponent, canActivate: [AuthguardGuard], data: { name: 'deposit-history' } },
   { path: 'game-timings', component: GameTimingsComponent, canActivate: [AuthguardGuard], data: { name: 'game-timings' } },
+  { path: 'rules-regulations', component: RulesRegulationComponent, canActivate: [AuthguardGuard], data: { name: 'rules-regulations' } },
 
 ]
 

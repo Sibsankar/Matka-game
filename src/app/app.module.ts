@@ -37,6 +37,7 @@ import { UpdateAccountComponent } from './update-account/update-account.componen
 import { DipositHistoryComponent } from './diposit-history/diposit-history.component';
 import { WithdrawHistoryComponent } from './withdraw-history/withdraw-history.component';
 import { GameTimingsComponent } from './game-timings/game-timings.component';
+import { RulesRegulationComponent } from './rules-regulation/rules-regulation.component';
 
 
 
@@ -63,7 +64,8 @@ import { GameTimingsComponent } from './game-timings/game-timings.component';
     UpdateAccountComponent,
     DipositHistoryComponent,
     WithdrawHistoryComponent,
-    GameTimingsComponent
+    GameTimingsComponent,
+    RulesRegulationComponent
   ],
   imports: [
     BrowserModule,
