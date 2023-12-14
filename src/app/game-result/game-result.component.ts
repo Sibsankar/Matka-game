@@ -23,15 +23,27 @@ export class GameResultComponent implements OnInit {
   public gameData = [];
   public single_bidData = [];
   public leagueData = [];
+  public resultData :any;
+  public gameDate :any;
   public jodi_bidData = [];
   public panna_bidData = [];
   public pageData = '';
   public bid_table = false;
   public leaguetable = true;
   public leagueResult = true;
-  public dipositFormData = {
-    token: localStorage.getItem('token')
-  }
+  public gameFormData = {
+    token: localStorage.getItem('token'),
+    startDate:'',
+    endDate:'',
+    leagueId:0,
+    leagueName:''
+  };
+
+  public results = {
+    data: {},
+    date:'',
+    
+  };
 
 
   
@@ -60,7 +72,7 @@ export class GameResultComponent implements OnInit {
         if(v.data.leaguesData.length>0){          
         this.leagueData=v.data.leaguesData
         Swal.close();
-        console.log('Ligue Data - ',this.leagueData);
+        console.log('Ligue Data - ',typeof this.leagueData);
         }
         this.leagueResult = false;
         this.leaguetable = true;
@@ -89,7 +101,9 @@ export class GameResultComponent implements OnInit {
     
   }
   getGameResult(league: any){
-
+this.gameFormData.leagueId = league.id;
+//console.log(league);
+this.gameFormData.leagueName = league.title;
     Swal.fire({
       title: 'Getting Results...',
       html: 'Please wait...',
@@ -100,16 +114,37 @@ export class GameResultComponent implements OnInit {
       }
     });
 
-    this.GameTimingsService.getMatkaResults(league).subscribe({
+
+    // this.GameTimingsService.getMatkaResults(this.gameFormData).subscribe(
+    //   data => { this.resultData = data.json();
+    //       this.resultData = Array.of(this.resultData); 
+    //       this.leagueResult = true;
+    // this.leaguetable = false;
+    //      Swal.close();
+    //    },
+    //   err => console.error(err), 
+    //   () => console.log('getBooks completed') 
+    //   );
+
+   
+
+    this.GameTimingsService.getMatkaResults(this.gameFormData).subscribe({
       next: (v) => {
-        console.log(v);
-        if(v.data.leaguesData.length>0){          
-        this.leagueData=v.data.leaguesData
-        Swal.close();
-        console.log('Ligue Data - ',this.leagueData);
-        }
+        
+        
+        if(v.status){          
+          
+          //Object.keys(v.data.gameData);
+        this.resultData= v.data.gameData
+        this.gameDate = v.data.gameDate;
+        this.gameDate = this.gameDate.reverse();
+        console.log('Result Data ---------',this.gameDate);
         this.leagueResult = true;
         this.leaguetable = false;
+        Swal.close();
+        
+        }
+        
         
       },
       error: (e) => {        

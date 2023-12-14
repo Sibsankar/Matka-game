@@ -7,7 +7,8 @@ import {Location} from '@angular/common';
 import { AuthenticationService } from '../services/authentication.service';
 import { DipositHistoryService } from '../services/diposit-history.service';
 import { Observable, of } from 'rxjs';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-diposit-history',
@@ -15,12 +16,14 @@ import Swal from 'sweetalert2'
   styleUrls: ['./diposit-history.component.css']
 })
 export class DipositHistoryComponent implements OnInit {
-
+  dtOptions: DataTables.Settings = {};
+  posts:any;
+  p: number = 1;
 
   constructor(private _location: Location, private router: Router, private route: ActivatedRoute, private AuthGuardService: AuthenticationService, private DipositHistoryService: DipositHistoryService) { }
   public error_msg = false;
   public errorMsg = '';
-  public dipositData = [];
+  public dipositData :  any[] = [];
   public single_bidData = [];
   public jodi_bidData = [];
   public panna_bidData = [];
@@ -34,12 +37,19 @@ export class DipositHistoryComponent implements OnInit {
   
 
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers'
+    };
     this.getDiposits();
+    
+    
     
   }
  
 
   getDiposits(){
+
+
     Swal.fire({
       title: 'Getting deposit list...',
       html: 'Please wait...',
@@ -52,9 +62,15 @@ export class DipositHistoryComponent implements OnInit {
 
     this.DipositHistoryService.getDiposits(this.dipositFormData).subscribe({
       next: (v) => {
-        console.log(v);
-        if(v.data.deposite_history.length>0){          
-        this.dipositData=v.data.deposite_history
+        console.log('dep-->', v.data.deposite_history);
+        if(v.data.deposite_history.length>0){  
+          
+        this.dipositData=v.data.deposite_history;
+       
+        // const myTimeout = setTimeout( 
+        //   $('#posts').DataTable({
+        //   responsive: true
+        // }), 15000);
         Swal.close();
         
         }
