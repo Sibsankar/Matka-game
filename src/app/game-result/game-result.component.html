@@ -72,6 +72,13 @@
                  
                 
                </ul> -->
+               <form action="" method="POST" >
+               <input type="date" name="startDate" [(ngModel)]="gameFormData.startDate" placeholder="Start Date">
+               <input type="date" name="endDate" [(ngModel)]="gameFormData.endDate" placeholder="End Date">
+               <button class="btn btn-primary"  type="button" (click)="getGameresultbyDate()">Submit</button>
+               <button class="btn btn-success"  type="button" (click)="reset()">Reset</button>
+              </form>
+               <br>
                
                <div class="tab-content rounded-lg" id="affanTab2Content">
                  <div class="tab-pane fade show active" id="sass" role="tabpanel" aria-labelledby="sass-tab">

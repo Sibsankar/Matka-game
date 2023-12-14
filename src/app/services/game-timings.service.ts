@@ -38,6 +38,10 @@ export class GameTimingsService {
     return this.http.post<any>(this.URL + 'get-games-result-by-league', data, this.httpOptions);
 
   }
+  getMatkaResultsByDate(data: any): Observable<any> {
+    return this.http.post<any>(this.URL + 'get-games-result-by-date', data, this.httpOptions);
+
+  }
  
   
 }

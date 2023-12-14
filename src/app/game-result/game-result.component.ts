@@ -115,16 +115,6 @@ this.gameFormData.leagueName = league.title;
     });
 
 
-    // this.GameTimingsService.getMatkaResults(this.gameFormData).subscribe(
-    //   data => { this.resultData = data.json();
-    //       this.resultData = Array.of(this.resultData); 
-    //       this.leagueResult = true;
-    // this.leaguetable = false;
-    //      Swal.close();
-    //    },
-    //   err => console.error(err), 
-    //   () => console.log('getBooks completed') 
-    //   );
 
    
 
@@ -166,6 +156,100 @@ this.gameFormData.leagueName = league.title;
 
   }
 
+  getGameresultbyDate()
+  {
+   console.log(this.gameFormData); 
+   Swal.fire({
+    title: 'Getting Results...',
+    html: 'Please wait...',
+    allowEscapeKey: false,
+    allowOutsideClick: false,
+    didOpen: () => {
+      Swal.showLoading()
+    }
+  });
+   this.GameTimingsService.getMatkaResultsByDate(this.gameFormData).subscribe({
+    next: (v) => {
+      
+      
+      if(v.status){          
+        
+        //Object.keys(v.data.gameData);
+      this.resultData= v.data.gameData
+      this.gameDate = v.data.gameDate;
+      this.gameDate = this.gameDate.reverse();
+      console.log('Result Data ---------',this.gameDate);
+      this.leagueResult = true;
+      this.leaguetable = false;
+      Swal.close();
+      
+      }
+      
+      
+    },
+    error: (e) => {        
+        if(e.status==400){
+          this.error_msg = true;
+          this.errorMsg = "Not Found";
+        }
+        if(e.status==401){
+          localStorage.clear();
+          this.error_msg = true;
+          this.errorMsg = "Not authorised";
+        }
+    },
+    complete: () => console.info('complete'),
+    
+  });
+  }
+reset(){
+
+  this.gameFormData.endDate = '';
+  this.gameFormData.startDate = '';
+  Swal.fire({
+    title: 'Getting Results...',
+    html: 'Please wait...',
+    allowEscapeKey: false,
+    allowOutsideClick: false,
+    didOpen: () => {
+      Swal.showLoading()
+    }
+  });
+
+  this.GameTimingsService.getMatkaResults(this.gameFormData).subscribe({
+    next: (v) => {
+      
+      
+      if(v.status){          
+        
+        //Object.keys(v.data.gameData);
+      this.resultData= v.data.gameData
+      this.gameDate = v.data.gameDate;
+      this.gameDate = this.gameDate.reverse();
+      console.log('Result Data ---------',this.gameDate);
+      this.leagueResult = true;
+      this.leaguetable = false;
+      Swal.close();
+      
+      }
+      
+      
+    },
+    error: (e) => {        
+        if(e.status==400){
+          this.error_msg = true;
+          this.errorMsg = "Not Found";
+        }
+        if(e.status==401){
+          localStorage.clear();
+          this.error_msg = true;
+          this.errorMsg = "Not authorised";
+        }
+    },
+    complete: () => console.info('complete'),
+    
+  });
+}
 
 
 
