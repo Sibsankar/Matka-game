@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute  } from '@angular/router'; 
 import { AuthenticationService } from '../services/authentication.service';
 import { Observable, of } from 'rxjs';
-
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-authentication',
   templateUrl: './authentication.component.html',
@@ -119,7 +119,20 @@ this.AuthGuardService.sendOtp(this.otpformdata).subscribe({
   next: (v) => {
     console.log(v.success);
     if(v.success){
-      this.otpSent=true;
+      if(v.success.status== 'error'){
+      
+        Swal.fire({
+          title: v.success.status,
+          text: v.success.msg,
+          icon: v.success.status
+        });
+        
+        
+        
+      }else{
+        this.otpSent=true;
+      }
+      
       
     }
     
@@ -149,32 +162,43 @@ this.AuthGuardService.sendOtp(this.otpformdata).subscribe({
     this.isconfpassword=false;
     this.mismatchpassword=false;
     console.log(this.regiterformdata);
-this.regiterformdata.email = this.otpformdata.email;
-this.regiterformdata.name = this.otpformdata.name;
-if(!this.regiterformdata.otp){
-this.isotp=true;
-return;
-}
-if(!this.regiterformdata.password){
-this.ispassword=true;
-return;
-}
-if(!this.regiterformdata.c_password){  
-this.isconfpassword=true;
-return;
-}
-if(this.regiterformdata.c_password != this.regiterformdata.password){  
-  this.mismatchpassword=true;
-  return;
-  }
+      this.regiterformdata.email = this.otpformdata.email;
+      this.regiterformdata.name = this.otpformdata.name;
+      if(!this.regiterformdata.otp){
+      this.isotp=true;
+      return;
+      }
+      if(!this.regiterformdata.password){
+      this.ispassword=true;
+      return;
+      }
+      if(!this.regiterformdata.c_password){  
+      this.isconfpassword=true;
+      return;
+      }
+      if(this.regiterformdata.c_password != this.regiterformdata.password){  
+        this.mismatchpassword=true;
+        return;
+        }
 
 
     this.AuthGuardService.register(this.regiterformdata).subscribe({
-  next: (v) => {
+    next: (v) => {
     console.log(v.success);
     if(v.success){
-      this.otpSent=true;
-      this.router.navigate(['/login']);
+      
+      Swal.fire({
+        title: v.success.status,
+        text: v.success.msg,
+        icon: v.success.status
+      });
+      if(v.success.status == 'success'){
+        this.otpSent=false;
+        this.loginHtml = true;
+        this.registerHtml = false;
+        this.router.navigate(['/login']);
+      }
+      
       
     }
     

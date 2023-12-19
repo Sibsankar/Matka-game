@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
   public errorMsg = '';
   public leagueData = [];
   public pageData = '';
+  public banner1 = '';
   ngOnInit(): void {
     this.getLigues();
     this.getPageText();
@@ -29,6 +30,7 @@ export class DashboardComponent implements OnInit {
         console.log('pageData Data - ',v.data.pageData);
         if(v.data.pageData){          
         this.pageData=v.data.pageData.home_slider_text;
+        this.banner1=v.data.pageData.banner1;
         console.log('pageData Data - ',this.pageData);
         }
         

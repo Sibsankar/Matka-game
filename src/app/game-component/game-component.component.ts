@@ -19,6 +19,8 @@ export class GameComponentComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute, private AuthGuardService: AuthenticationService, private GameService: GameService) { }
   public error_msg = false;
+  public userName='';
+  public wallet_money='';
   public errorMsg = '';
   public gamesData = {title: '', start_time: '', end_time: ''};
   currentDate = new Date();
@@ -32,6 +34,9 @@ export class GameComponentComponent implements OnInit {
   public showCpPrice = false;
   public showDigitbtn = true;
   public gameId = this.route.snapshot.paramMap.get('id');
+  public userToken = {
+    token: localStorage.getItem('token') 
+  }
   public playSingleForm = {
     game_id: this.gameId,
     price: '',
@@ -75,6 +80,38 @@ export class GameComponentComponent implements OnInit {
   ngOnInit(): void {
     this.getGame();
     this.getBidLists();
+  }
+
+  getUserdetails(){
+    console.log('token',this.userToken);
+    
+    this.AuthGuardService.getUserDetails(this.userToken).subscribe({
+      next: (v) => {
+        console.log(v.success);
+        if(v.success){
+         this.userName=v.success.userDetails.name;
+         this.wallet_money=v.success.userDetails.wallet_money;
+         console.log('Login UserName - ',this.userName);
+          //this.router.navigate(['/calcutta-matka']);
+        }
+        
+      },
+      error: (e) => {
+        console.log(e.status);
+        console.log(e.status);
+          if(e.status==400){
+            this.error_msg = true;
+            this.errorMsg = "Please enter Registered Email id and Password";
+          }
+          if(e.status==401){
+            localStorage.clear();
+            this.error_msg = true;
+            this.errorMsg = "Please enter valid Registered Email id and Password";
+          }
+      },
+      complete: () => console.info('complete'),
+      
+  });
   }
 
   public twodigit(event: any) {
@@ -210,6 +247,7 @@ export class GameComponentComponent implements OnInit {
             this.playSingleForm.price = '';
             this.getBidLists();
             this.router.navigate(['/play-game/'+this.gameId]);
+            this.getUserdetails();
           }
           
         },

@@ -21,6 +21,9 @@ export class InheaderComponent implements OnInit {
   ngOnInit(): void {
     this.getUserdetails();
   }
+  showBal(){
+    this.getUserdetails();
+  }
   getUserdetails(){
     console.log('token',this.userToken);
     

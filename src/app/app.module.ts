@@ -38,6 +38,7 @@ import { DipositHistoryComponent } from './diposit-history/diposit-history.compo
 import { WithdrawHistoryComponent } from './withdraw-history/withdraw-history.component';
 import { GameTimingsComponent } from './game-timings/game-timings.component';
 import { RulesRegulationComponent } from './rules-regulation/rules-regulation.component';
+import { AppDownloadComponent } from './app-download/app-download.component';
 
 
 
@@ -65,7 +66,8 @@ import { RulesRegulationComponent } from './rules-regulation/rules-regulation.co
     DipositHistoryComponent,
     WithdrawHistoryComponent,
     GameTimingsComponent,
-    RulesRegulationComponent
+    RulesRegulationComponent,
+    AppDownloadComponent
   ],
   imports: [
     BrowserModule,

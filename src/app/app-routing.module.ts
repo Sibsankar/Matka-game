@@ -17,9 +17,10 @@ import { DipositHistoryComponent} from './diposit-history/diposit-history.compon
 import { WithdrawHistoryComponent } from  './withdraw-history/withdraw-history.component'
 import { GameTimingsComponent } from './game-timings/game-timings.component'
 import { RulesRegulationComponent } from './rules-regulation/rules-regulation.component'
+import { AppDownloadComponent } from './app-download/app-download.component'
 
 const routes: Routes = [
-  { path: '', component: AuthenticationComponent },
+  { path: '', component: AppDownloadComponent },
   { path: 'login', component: AuthenticationComponent },
   { path: 'calcutta-matka', component: CalcuttaMatkaComponent, canActivate: [AuthguardGuard], data: { name: 'calcutta-matka' } },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthguardGuard], data: { name: 'dashboard' } },
@@ -41,7 +42,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  exports: [RouterModule,]
 })
 export class AppRoutingModule { }
