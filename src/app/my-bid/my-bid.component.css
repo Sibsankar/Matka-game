@@ -10,3 +10,35 @@
     font-weight: bold;
     background-color: #FFFF00;
 }
+.game-sec {
+    width: 100%;
+  } 
+  .tab-label {
+    color: black;
+    font-weight: bold;
+  }
+  .mat-tab-label-active {
+    background-color: #032250;
+  }
+  .mat-tab-label-active .tab-label {
+    color: #FFFF;
+  }
+  .bet-btn {width: 100%;}
+  
+  
+  /* Styles for the active tab label */
+  .mat-tab-label.mat-tab-label-active {
+  
+      background-color: #0b428f;
+      color: red;
+      font-weight: 700;
+  }
+  
+  .game-close{
+    
+    font-size: x-large;
+    color: crimson;
+  }
+  
+  table { text-align: center;}
+  

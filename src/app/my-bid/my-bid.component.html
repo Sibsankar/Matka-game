@@ -46,95 +46,140 @@
 
 				</div>
 <div class="col-sm-12" *ngIf="bid_table">
+
+  <mat-tab-group>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <div class="tab-label">Single Bids</div>
+      </ng-template>
+      <hr>
+      <div class="row game-sec">
+        <h1>Single Bids</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">League Title</th>
+              <th scope="col">Game</th>
+              <th scope="col">Start Time</th>
+              <th scope="col">Digit</th>
+              <th scope="col">Price</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+  
+  
+            <tr *ngFor="let singleBids of single_bidData ;  let i = index">
+              <th scope="row">{{ singleBids['leagues_title'] }}</th>
+              <td>{{ singleBids['game_title'] }}</td>
+              <td>{{ singleBids['start_time'] }}</td>
+              <td>{{ singleBids['digit'] }}</td>
+              <td>{{ singleBids['price'] }}</td>
+              <td class="win-td" *ngIf="singleBids['status']==1 && singleBids['winning_amount']"> WIN </td>
+              <td class="lose-td" *ngIf="!singleBids['winning_amount'] && singleBids['status']==1 && singleBids['result_status']!=0"> LOSE </td>
+              <td class="pending-td" *ngIf="!singleBids['winning_amount'] && singleBids['result_status']==0"> Result Pending </td>
+            </tr>
+            
+          </tbody>
+        </table> <hr>
+       
+      </div>
+    </mat-tab>
+  
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <!-- <mat-icon class="example-tab-icon">thumb_up</mat-icon> -->
+        <div class="tab-label">Jodi Bids</div>
+      </ng-template>
+      <hr>
+      <div class="row game-sec">
+        <h1>Jodi Bids</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">League Title</th>
+              <th scope="col">Game</th>
+              <th scope="col">Start Time</th>
+              <th scope="col">Digit</th>
+              <th scope="col">Price</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let jodiBids of jodi_bidData ;  let i = index">
+              <th scope="row">{{ jodiBids['leagues_title'] }}</th>
+              <td>{{ jodiBids['game_title'] }}</td>
+              <td>{{ jodiBids['start_time'] }}</td>
+              <td>{{ jodiBids['digit'] }}</td>
+              <td>{{ jodiBids['price'] }}</td>
+              <td class="win-td" *ngIf="jodiBids['status']==1 && jodiBids['winning_amount']"> WIN </td>
+              <td class="lose-td" *ngIf="!jodiBids['winning_amount'] && jodiBids['status']==1 && jodiBids['result_status']!=0"> LOSE </td>
+              <td class="pending-td" *ngIf="!jodiBids['winning_amount'] && jodiBids['result_status']==0"> Result Pending </td>
+           </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    </mat-tab>
+  
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <div class="tab-label">Panna Bids</div>
+      </ng-template>
+      <hr>
+      <div class="row game-sec">
+        <h1>Panna Bids</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">League Title</th>
+              <th scope="col">Game</th>
+              <th scope="col">Start Time</th>
+              <th scope="col">Digit</th>
+              <th scope="col">Price</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pannaBids of panna_bidData ;  let i = index">
+              <th scope="row">{{ pannaBids['leagues_title'] }}</th>
+              <td>{{ pannaBids['game_title'] }}</td>
+              <td>{{ pannaBids['start_time'] }}</td>
+              <td>{{ pannaBids['digit'] }}</td>
+              <td>{{ pannaBids['price'] }}</td>
+  
+              
+  
+  
+              <td class="win-td" *ngIf="pannaBids['status']==1 && pannaBids['winning_amount']"> WIN </td>
+              <td class="lose-td" *ngIf="!pannaBids['winning_amount'] && pannaBids['status']==1 && pannaBids['result_status']!=0"> LOSE </td>
+              <td class="pending-td" *ngIf="!pannaBids['winning_amount'] && pannaBids['result_status']==0"> Result Pending </td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    </mat-tab>
+
+   
+  </mat-tab-group>
+
+
+
+
+
+
     <button (click)="backClicked()" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-90deg-left" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z"/>
       </svg></button>
-    <h1>Single Bids</h1>
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">League Title</th>
-            <th scope="col">Game</th>
-            <th scope="col">Start Time</th>
-            <th scope="col">Digit</th>
-            <th scope="col">Price</th>
-            <th scope="col">Status</th>
-          </tr>
-        </thead>
-        <tbody>
+   
+    
 
-
-          <tr *ngFor="let singleBids of single_bidData ;  let i = index">
-            <th scope="row">{{ singleBids['leagues_title'] }}</th>
-            <td>{{ singleBids['game_title'] }}</td>
-            <td>{{ singleBids['start_time'] }}</td>
-            <td>{{ singleBids['digit'] }}</td>
-            <td>{{ singleBids['price'] }}</td>
-            <td class="win-td" *ngIf="singleBids['status']==1 && singleBids['winning_amount']"> WIN </td>
-            <td class="lose-td" *ngIf="!singleBids['winning_amount'] && singleBids['status']==1 && singleBids['result_status']!=0"> LOSE </td>
-            <td class="pending-td" *ngIf="!singleBids['winning_amount'] && singleBids['result_status']==0"> Result Pending </td>
-          </tr>
-          
-        </tbody>
-      </table>
-
-      <h1>Jodi Bids</h1>
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">League Title</th>
-            <th scope="col">Game</th>
-            <th scope="col">Start Time</th>
-            <th scope="col">Digit</th>
-            <th scope="col">Price</th>
-            <th scope="col">Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let jodiBids of jodi_bidData ;  let i = index">
-            <th scope="row">{{ jodiBids['leagues_title'] }}</th>
-            <td>{{ jodiBids['game_title'] }}</td>
-            <td>{{ jodiBids['start_time'] }}</td>
-            <td>{{ jodiBids['digit'] }}</td>
-            <td>{{ jodiBids['price'] }}</td>
-            <td class="win-td" *ngIf="jodiBids['status']==1 && jodiBids['winning_amount']"> WIN </td>
-            <td class="lose-td" *ngIf="!jodiBids['winning_amount'] && jodiBids['status']==1 && jodiBids['result_status']!=0"> LOSE </td>
-            <td class="pending-td" *ngIf="!jodiBids['winning_amount'] && jodiBids['result_status']==0"> Result Pending </td>
-         </tr>
-          
-        </tbody>
-      </table>
+     
+    
 
       <h1>Panna Bids</h1>
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">League Title</th>
-            <th scope="col">Game</th>
-            <th scope="col">Start Time</th>
-            <th scope="col">Digit</th>
-            <th scope="col">Price</th>
-            <th scope="col">Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let pannaBids of panna_bidData ;  let i = index">
-            <th scope="row">{{ pannaBids['leagues_title'] }}</th>
-            <td>{{ pannaBids['game_title'] }}</td>
-            <td>{{ pannaBids['start_time'] }}</td>
-            <td>{{ pannaBids['digit'] }}</td>
-            <td>{{ pannaBids['price'] }}</td>
-
-            
-
-
-            <td class="win-td" *ngIf="pannaBids['status']==1 && pannaBids['winning_amount']"> WIN </td>
-            <td class="lose-td" *ngIf="!pannaBids['winning_amount'] && pannaBids['status']==1 && pannaBids['result_status']!=0"> LOSE </td>
-            <td class="pending-td" *ngIf="!pannaBids['winning_amount'] && pannaBids['result_status']==0"> Result Pending </td>
-          </tr>
-          
-        </tbody>
-      </table>
+   
 </div>
 
 			</div>
