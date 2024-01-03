@@ -21,6 +21,7 @@ export class MyBidComponent implements OnInit {
   public single_bidData = [];
   public jodi_bidData = [];
   public panna_bidData = [];
+  public cp_bidData = [];
   public pageData = '';
   public bid_table = false;
   public leaguetable = true;
@@ -58,6 +59,7 @@ export class MyBidComponent implements OnInit {
               this.single_bidData = v.data.single_bids;
               this.jodi_bidData = v.data.jodi_bids;
               this.panna_bidData = v.data.panna_bids;
+              this.cp_bidData = v.data.cp_bids;
         }
         
       },

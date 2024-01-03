@@ -61,7 +61,7 @@
               <form action="" method="POST" *ngIf="loginHtml">
              
                   <div class="form-group mb-0 rupee-symball mt-1">
-                    <input type="email" class="form-control1" name="email" id="email" [(ngModel)]="loginformdata.email" placeholder="Email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required autofocus>
+                    <input type="text" class="form-control1" name="phoneNo" id="phoneNo" [(ngModel)]="loginformdata.phoneNo" placeholder="Phone No" required autofocus>
                    
                         <span class="invalid-feedback">
                             <strong></strong>
@@ -82,22 +82,29 @@
             <form action="" method="POST" *ngIf="registerHtml">
              
                   <div class="form-group mb-0 rupee-symball mt-1">
-                    <input type="text" class="form-control1" name="name" [(ngModel)]="otpformdata.name" placeholder="Your Name" required autofocus>
+                    <input type="text" class="form-control1" name="name" [(ngModel)]="regiterformdata.name" placeholder="Your Name" required autofocus>
                   </div>
                   <span *ngIf="isname" style="color:red;">Please enter name</span>
+
                   <div class="form-group mb-0 rupee-symball mt-1">
+                    <input type="text" class="form-control1" name="phoneNo" [(ngModel)]="regiterformdata.phoneNo" placeholder="Mobile No" required autofocus>
+                  </div>
+                  <span *ngIf="isphone"  style="color:red;">Please enter phone number</span>
+
+                  <!-- <div class="form-group mb-0 rupee-symball mt-1">
                     <input type="email" class="form-control1" name="email" [(ngModel)]="otpformdata.email" id="email" placeholder="Email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required autofocus>
                     <br>
                     <span *ngIf="isemail" style="color:red;">Please enter email</span>
                     <button (click)="sendOTP();" class="request-balance btn btn-primary" type="button">Send OTP</button>
                     <br>
                     <span id="otp_div" *ngIf="otpSent" style="color:green;">OTP send to your email</span>
-                  </div>
+                  </div> -->
                   <input type="hidden" id="otp" name="otp" value="" />
-                  <div class="form-group mb-0 rupee-symball mt-1">
+                  <!-- <div class="form-group mb-0 rupee-symball mt-1">
                     <input type="text" class="form-control1" name="otp" [(ngModel)]="regiterformdata.otp" placeholder="OTP" required autofocus>
-                  </div>
-                  <span  style="color:red;" *ngIf="isotp">Please enter OTP</span>
+                  </div> -->
+                  
+                  <!-- <span  style="color:red;" *ngIf="isotp">Please enter OTP</span> -->
                   <div class="form-group mb-0 rupee-symball mt-1">
                     <input type="text" class="form-control1" name="password" [(ngModel)]="regiterformdata.password" placeholder="Password" required autofocus>
                   </div>

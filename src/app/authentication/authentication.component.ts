@@ -17,6 +17,7 @@ public isconfpassword=false;
 public ispassword=false;
 public mismatchpassword=false;
 public isotp=false;
+public isphone=false;
 public registerHtml=false;
   public adminlogin=true;
   public userlogin=false;
@@ -24,7 +25,7 @@ public registerHtml=false;
   public errorMsg = '';
 
   public loginformdata = {
-    email: '',
+    phoneNo: '',
     password: '',
     is_remember: ''
   }
@@ -39,7 +40,7 @@ public registerHtml=false;
     password: '',
     c_password: '',
     name:'',
-    otp:''
+    phoneNo:''
   }
 
 
@@ -74,7 +75,7 @@ public registerHtml=false;
       next: (v) => {
         console.log(v.success);
         if(v.success){
-          localStorage.setItem('email',this.loginformdata.email);
+          localStorage.setItem('phoneNo',this.loginformdata.phoneNo);
           //localStorage.setItem('email',v.);
           localStorage.setItem('isAuthenticate','true');
           localStorage.setItem('token',v.success.tokenid);
@@ -157,17 +158,21 @@ this.AuthGuardService.sendOtp(this.otpformdata).subscribe({
 
 
   createAccount(){
-    this.isotp=false;
+    this.isphone =false;
     this.ispassword=false;
     this.isconfpassword=false;
     this.mismatchpassword=false;
+    this.isname=false;
     console.log(this.regiterformdata);
-      this.regiterformdata.email = this.otpformdata.email;
-      this.regiterformdata.name = this.otpformdata.name;
-      if(!this.regiterformdata.otp){
-      this.isotp=true;
+      if(!this.regiterformdata.name){
+      this.isname=true;
       return;
       }
+
+      if(!this.regiterformdata.phoneNo){
+        this.isphone=true;
+        return;
+        }
       if(!this.regiterformdata.password){
       this.ispassword=true;
       return;
@@ -199,6 +204,13 @@ this.AuthGuardService.sendOtp(this.otpformdata).subscribe({
         this.router.navigate(['/login']);
       }
       
+      
+    }else{
+      Swal.fire({
+        title: 'Error',
+        text: v.error,
+        icon: 'error'
+      });
       
     }
     
