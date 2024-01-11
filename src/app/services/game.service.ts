@@ -56,4 +56,8 @@ export class GameService {
   playnow(data: any): Observable<any> {
     return this.http.post<any>(this.URL + 'playnow', data, this.httpOptions);
   }
+
+  generateResult(data: any): Observable<any> {
+    return this.http.get<any>(this.URL + 'generateResult');
+  }
 }

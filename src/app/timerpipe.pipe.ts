@@ -1,22 +1,38 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Observable, timer } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { GameService } from '../app/services/game.service';
 
 @Pipe({
   name: 'countdown'
 })
 export class TimerpipePipe implements PipeTransform {
 
+    constructor(private GameService: GameService) { }
     /**
      * Gets the millisecond difference between a future date and now
      * @private
      * @param   futureDate: string
      * @returns number  milliseconds remaining
      */
-    private getMsDiff (futureDate: string, endDate?: string): number {
+    private getMsDiff (futureDate: string, endDate?: string, gameId?: string): number {
         
         if (endDate && ((+(new Date(endDate)) - Date.now()) < 0)) {
             console.log('eeend', endDate);
+            // make api call for generate result here
+            // this.GameService.generateResult(gameId).subscribe({
+            //     next: (v) => {
+            //       // console.log('Games Data - ',v.data);
+            //       if(v.data.msg){  
+            //         console.log('gamesData Data - ', v.data.msg);
+            //       }
+            //     },
+            //     error: (e) => {        
+            //         console.log(e);
+            //     },
+            //     complete: () => console.info('complete'),
+                
+            // });
             return 0.01;
         } else {
             return (+(new Date(futureDate)) - Date.now());
@@ -63,7 +79,7 @@ export class TimerpipePipe implements PipeTransform {
      *                      e.g. YYYY-MM-DDTHH:mm:ss.msz
      *                      e.g. 2021-06-04T17:27:10.740z
      */
-    public transform(futureDate: string, endDate?: string): Observable<any> {
+    public transform(futureDate: string, endDate?: string, gameId?: string): Observable<any> {
         /**
          * Initial check to see if time remaining is in the future
          * If not, don't bother creating an observable
@@ -73,7 +89,7 @@ export class TimerpipePipe implements PipeTransform {
         // }
         return timer(0, 1000).pipe(
             map(() => {
-                return this.msToTime(this.getMsDiff(futureDate, endDate));
+                return this.msToTime(this.getMsDiff(futureDate, endDate, gameId));
             })
         );
     }

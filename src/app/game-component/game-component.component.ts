@@ -40,7 +40,7 @@ export class GameComponentComponent implements OnInit {
   public playSingleForm = {
     game_id: this.gameId,
     price: '',
-    digit: '',
+    digit: 0,
     token: localStorage.getItem('token')
   }
   public playPannaForm = {
@@ -137,7 +137,7 @@ export class GameComponentComponent implements OnInit {
   }
 
   clearform() {
-    this.playSingleForm.digit = '';
+    this.playSingleForm.digit = 0;
     this.playSingleForm.price = '';
     this.playPannaForm.digit = '';
     this.playPannaForm.price = '';
@@ -220,10 +220,10 @@ export class GameComponentComponent implements OnInit {
 
   playSingle(){
     console.log(this.playSingleForm);
-    if(this.playSingleForm.digit == '') {
+    if(this.playSingleForm.digit < 0 || this.playSingleForm.digit==null) {
       Swal.fire({
         title: "Error",
-        text: 'Enter Digit',
+        text: 'Enter Correct Digit',
         icon: "error"
       });
     } else if(this.playSingleForm.price == '') {
@@ -243,7 +243,7 @@ export class GameComponentComponent implements OnInit {
               text: v.data.msg,
               icon: "success"
             });
-            this.playSingleForm.digit = '';
+            this.playSingleForm.digit = 0;
             this.playSingleForm.price = '';
             this.getBidLists();
             this.router.navigate(['/play-game/'+this.gameId]);
