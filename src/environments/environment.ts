@@ -5,7 +5,7 @@
 
 export const environment = {
   production: true,
-  angApiUrl: 'https://calcuttamatka.com/backend/api/',
+  angApiUrl: 'http://localhost/matka-backend/api/',
   //projectBaseURL: '',
 };
 
