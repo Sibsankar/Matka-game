@@ -36,9 +36,11 @@
           <hr>
           <div class="row game-sec">
             <div class="col-6">
+              <h6>Enter any digit from (0-9)</h6>
               <input type="number" class="form-control" [(ngModel)]="playSingleForm.digit" placeholder="Enter Digit">
             </div>
             <div class="col-6">
+              <h6>Enter Price</h6>
               <input type="number" class="form-control" [(ngModel)]="playSingleForm.price" placeholder="Enter Rs.">
             </div>
             <div class="col-12"><button class="btn btn-success bet-btn" *ngIf="(gamesData['end_time'] | countdown | async) != 'Play'" (click)="playSingle()">ADD BET</button></div>
@@ -77,6 +79,7 @@
           <hr>
           <div class="row game-sec">
             <div class="col-6">
+             
               <input type="number" name="" class="form-control" (keyup)="threedigit($event)" [(ngModel)]="playPannaForm.digit" placeholder="Enter 3-Digit Number">
             </div>
             <div class="col-6">

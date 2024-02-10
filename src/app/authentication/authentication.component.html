@@ -71,7 +71,7 @@
                   <div class="form-group mb-0 rupee-symball mt-1">
                     <input type="password" class="form-control1" name="password" [(ngModel)]="loginformdata.password" placeholder="Password" required autofocus>
                   </div>
-               
+                  <span *ngIf="error_msg" style="color:red;">Please enter valid username and password</span>
             <div class="add-money text-center">
               <!--<form action="#" method="GET">-->
                 <button class="request-balance btn btn-primary" (click)="login()" type="button">Login</button>
