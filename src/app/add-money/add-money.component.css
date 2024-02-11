@@ -1,0 +1,73 @@
+
+.label {
+	padding: 10px;
+	font-size: 18px;
+	color: #111;
+}
+.copy-text {
+	position: relative;
+	
+	background: #fff;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	display: flex;
+}
+.copy-text input.text {
+	padding: 10px;
+	font-size: 18px;
+	color: #555;
+	border: none;
+	outline: none;
+}
+.copy-text button {
+	padding: 19px;
+	background: #5784f5;
+	color: #fff;
+	font-size: 18px;
+	border: none;
+	outline: none;
+	border-radius: 0 30px 0 30px;
+	cursor: pointer;
+    margin-left: 5px;
+}
+
+.copy-text button:active {
+	background: #809ce2;
+}
+.copy-text button:before {
+	content: "Copied";
+	position: absolute;
+	top: -45px;
+	right: 0px;
+	background: #5c81dc;
+	padding: 8px 10px;
+	border-radius: 20px;
+	font-size: 15px;
+	display: none;
+}
+.copy-text button:after {
+	content: "";
+	position: absolute;
+	top: -20px;
+	right: 25px;
+	width: 10px;
+	height: 10px;
+	background: #5c81dc;
+	transform: rotate(45deg);
+	display: none;
+}
+.copy-text.active button:before,
+.copy-text.active button:after {
+	display: block;
+}
+.payment-option{ padding-bottom: 60px;}
+.add-money{ height: 150px;}
+.add-money .copy-text{ background: none; border: none;position: relative;}
+.add-money button{ position: absolute;right: 0;}
+.add-money input{ width: 100%;}
+.payment-option .btn-success{margin-bottom: 50px;}
+.inner-page-white{ height: auto !important;}
+
+@media only screen and (max-width: 767px) {
+	.add-money{ }
+}

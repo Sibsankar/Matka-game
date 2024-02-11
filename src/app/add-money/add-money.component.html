@@ -8,15 +8,49 @@
         <div class="container">
         <div class="row">
          <div class="card">
-              <div class="card-body">
+              <div class="card-body payment-option">
                 <div class="text-center mt-4 mb-4" *ngIf="qr_code">
+                  
+                  <div class="container">
+                    <div class="news">
+                      <marquee>{{ this.settingsData.addmoney_text }}</marquee>
+                    </div>
+                    </div>
                     <p style="color: red;">* Pay using this QR code and request balance for approval</p>
                     <img src="assets/img/phonepay.jpeg" style="max-width: 55%;">
-                    <button class="btn btn-success" type="button" (click)="reqbal()">REQUEST BALANCE</button>
-                   
+
+   
+                    
                 </div>
+                <div class="row">
+                <div class="add-money  col-12 ">
+                <div class="label">
+                  {{ this.settingsData.upi_1 }}
+                </div>
+                <div class="copy-text">
+                  <input type="text" class="text" [(ngModel)]="upiDaata.upi_1_phone"  disabled="disabled"/>
+                  <button (click)="copytoClipboardupi1()">Copy</button>
+                </div>
+              </div>
+             
+              <div class="add-money  col-12">
+                <div class="label" >
+                  {{ this.settingsData.upi_2 }}
+                </div>
+                <div class="copy-text" style="margin-bottom: 100px;">
+                  <input type="text" class="text" [(ngModel)]="upiDaata.upi_2_phone"  disabled="disabled"/>
+                  <button (click)="copytoClipboardupi2()">Copy</button>
+                </div>
+              </div>
+            </div>
+              <div class="col-sm-12 text-center">
+                <button *ngIf="qr_code" class="btn btn-success" type="button" (click)="reqbal()">REQUEST BALANCE</button>
+              </div>
+
                 
-<div *ngIf="req_balance">
+
+
+                <div *ngIf="req_balance">
                <div class="money-icon text-center mt-4 mb-4">
                    <img src="assets/img/money.png">
                    <button class="btn btn-success" style="margin-left: 10px;" type="button" (click)="addMoney()">ADD MONEY</button>
@@ -64,6 +98,7 @@
                   </li>
                   </ul>
                 </div>
+                
                 
                 <div class="add-money text-center">
                   <form action="#" method="GET">

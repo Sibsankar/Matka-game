@@ -3,8 +3,10 @@ import { Router, ActivatedRoute  } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import { DashboardService } from '../services/dashboard.service';
 import { AddMoneyService } from '../services/add-money.service';
+import { RulesRegulationService } from '../services/rules-regulation.service';
 import { Observable, of } from 'rxjs';
 import Swal from 'sweetalert2'
+import {Clipboard} from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-add-money',
@@ -13,8 +15,9 @@ import Swal from 'sweetalert2'
 })
 export class AddMoneyComponent implements OnInit {
 
-  constructor(private router: Router, private route: ActivatedRoute, private AuthGuardService: AuthenticationService, private AddMoneyService: AddMoneyService) { }
+  constructor(private clipboard: Clipboard,private router: Router, private route: ActivatedRoute,private RulesRegulationService: RulesRegulationService, private AuthGuardService: AuthenticationService, private AddMoneyService: AddMoneyService) { }
   public req_balance=false;
+  public settingsData:any;
   public qr_code = true;
   public transfer_mode: string = "My value 1";
   public addMoneyFormData = {
@@ -23,21 +26,65 @@ export class AddMoneyComponent implements OnInit {
     transfer_mode: '',
     token: localStorage.getItem('token')
   }
+
+  public upiDaata = {
+    upi_2_phone: '',
+    upi_1_phone: '',
+    
+  }
   public error_msg = false;
   public errorMsg = '';
   ngOnInit(): void {
+    this.getPageData();
   }
 
   reqbal(){
     this.qr_code = false;
     this.req_balance = true;
   }
-
+ 
   addMoney(){
     this.qr_code = true;
     this.req_balance = false;
   }
 
+  copytoClipboardupi1(){
+    //console.log('upi phone-----------',this.upiDaata.upi_1_phone);
+    this.clipboard.copy(this.upiDaata.upi_1_phone);
+  }
+
+  copytoClipboardupi2(){
+    //console.log('upi phone-----------',this.upiDaata.upi_2_phone);
+    this.clipboard.copy(this.upiDaata.upi_2_phone);
+  }
+
+
+  getPageData(){
+    this.RulesRegulationService.getRules().subscribe({
+      next: (v) => {
+        console.log(v);
+        if(v.data.pageData){          
+        this.settingsData=v.data.pageData
+        this.upiDaata.upi_1_phone = this.settingsData.upi_1_phone
+        this.upiDaata.upi_2_phone = this.settingsData.upi_2_phone
+        
+        Swal.close();
+        
+        }
+        
+        
+      },
+      error: (e) => {        
+        Swal.fire({
+          title: "Oops..."+e.status,
+          text: ' Something Went wrong',
+          icon: "error"
+        });
+      },
+      complete: () => console.info('complete'),
+      
+    });
+  }
 
   addMoneyToWallet(){
     console.log(this.addMoneyFormData);
