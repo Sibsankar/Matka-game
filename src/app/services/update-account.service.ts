@@ -31,5 +31,10 @@ export class UpdateAccountService {
     return this.http.post<any>(this.URL + 'getAccountDetails', data, this.httpOptions);
 
   }
+
+  updatePasswordDetails(data: any): Observable<any> {
+    return this.http.post<any>(this.URL + 'password-change', data, this.httpOptions);
+
+  }
 }
 

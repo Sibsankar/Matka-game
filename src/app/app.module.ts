@@ -39,6 +39,7 @@ import { WithdrawHistoryComponent } from './withdraw-history/withdraw-history.co
 import { GameTimingsComponent } from './game-timings/game-timings.component';
 import { RulesRegulationComponent } from './rules-regulation/rules-regulation.component';
 import { AppDownloadComponent } from './app-download/app-download.component';
+import { PasswordChangeComponent } from './password-change/password-change.component';
 
 
 
@@ -67,7 +68,8 @@ import { AppDownloadComponent } from './app-download/app-download.component';
     WithdrawHistoryComponent,
     GameTimingsComponent,
     RulesRegulationComponent,
-    AppDownloadComponent
+    AppDownloadComponent,
+    PasswordChangeComponent
   ],
   imports: [
     BrowserModule,

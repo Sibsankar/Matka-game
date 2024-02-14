@@ -18,6 +18,7 @@ import { WithdrawHistoryComponent } from  './withdraw-history/withdraw-history.c
 import { GameTimingsComponent } from './game-timings/game-timings.component'
 import { RulesRegulationComponent } from './rules-regulation/rules-regulation.component'
 import { AppDownloadComponent } from './app-download/app-download.component'
+import { PasswordChangeComponent } from './password-change/password-change.component'
 
 const routes: Routes = [
   { path: '', component: AppDownloadComponent },
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'deposit-history', component: DipositHistoryComponent, canActivate: [AuthguardGuard], data: { name: 'deposit-history' } },
   { path: 'game-timings', component: GameTimingsComponent, canActivate: [AuthguardGuard], data: { name: 'game-timings' } },
   { path: 'rules-regulations', component: RulesRegulationComponent, canActivate: [AuthguardGuard], data: { name: 'rules-regulations' } },
+  { path: 'change-password', component: PasswordChangeComponent, canActivate: [AuthguardGuard], data: { name: 'change-password' } },
 
 ]
 
