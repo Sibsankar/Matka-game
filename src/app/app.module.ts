@@ -40,6 +40,7 @@ import { GameTimingsComponent } from './game-timings/game-timings.component';
 import { RulesRegulationComponent } from './rules-regulation/rules-regulation.component';
 import { AppDownloadComponent } from './app-download/app-download.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
+//import { PhoneMaskDirective } from './phone-mask.directive'; 
 
 
 
@@ -70,6 +71,7 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
     RulesRegulationComponent,
     AppDownloadComponent,
     PasswordChangeComponent
+    
   ],
   imports: [
     BrowserModule,

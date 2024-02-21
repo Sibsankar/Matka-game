@@ -18,6 +18,8 @@ public ispassword=false;
 public mismatchpassword=false;
 public isotp=false;
 public isphone=false;
+public isphonesp=false;
+public ispasssp=false;
 public registerHtml=false;
   public adminlogin=true;
   public userlogin=false;
@@ -46,7 +48,21 @@ public registerHtml=false;
 
   
   constructor(private router: Router, private route: ActivatedRoute, private AuthGuardService: AuthenticationService) { }
-
+keyPress(event: any) {
+ 
+  //console.log('rftrtuyru ',event.keyCode)
+    const pattern = /[0-9\+\-\ ]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode != 8 && !pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+    if(event.keyCode==32){
+      let text=this.regiterformdata.phoneNo;
+      let nt=text.replace(/\s/g,'').trim()
+      console.log(nt,'hi');
+      this.regiterformdata.phoneNo=nt.trim();
+    }
+  }
   ngOnInit(): void {
     if(this.route.snapshot.url.length!=0){
       if(this.route.snapshot.url[0].path=='login'){
@@ -159,6 +175,8 @@ this.AuthGuardService.sendOtp(this.otpformdata).subscribe({
 
   createAccount(){
     this.isphone =false;
+    this.isphonesp =false;
+    this.ispasssp =false;
     this.ispassword=false;
     this.isconfpassword=false;
     this.mismatchpassword=false;
@@ -173,10 +191,19 @@ this.AuthGuardService.sendOtp(this.otpformdata).subscribe({
         this.isphone=true;
         return;
         }
+
+        if(this.regiterformdata.phoneNo.indexOf(' ') >= 0){
+        this.isphonesp=true;
+        }
+
       if(!this.regiterformdata.password){
       this.ispassword=true;
       return;
       }
+      if(this.regiterformdata.password.indexOf(' ') >= 0){
+        this.ispasssp=true;
+        }
+
       if(!this.regiterformdata.c_password){  
       this.isconfpassword=true;
       return;
@@ -232,5 +259,7 @@ this.AuthGuardService.sendOtp(this.otpformdata).subscribe({
   
 });
   }
+
+  
 
 }

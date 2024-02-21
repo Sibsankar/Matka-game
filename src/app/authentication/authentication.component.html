@@ -79,17 +79,18 @@
             </div>
             </form>
 
-            <form action="" method="POST" *ngIf="registerHtml">
+            <form action=""  method="POST" *ngIf="registerHtml">
              
                   <div class="form-group mb-0 rupee-symball mt-1">
-                    <input type="text" class="form-control1" name="name" [(ngModel)]="regiterformdata.name" placeholder="Your Name" required autofocus>
+                    <input type="text" class="form-control1"  name="name" [(ngModel)]="regiterformdata.name" placeholder="Your Name" required autofocus>
                   </div>
                   <span *ngIf="isname" style="color:red;">Please enter name</span>
 
                   <div class="form-group mb-0 rupee-symball mt-1">
-                    <input type="text" class="form-control1" name="phoneNo" [(ngModel)]="regiterformdata.phoneNo" placeholder="Mobile No" required autofocus>
+                    <input type="text" class="form-control1"  maxlength="10" name="phoneNo" [(ngModel)]="regiterformdata.phoneNo" placeholder="Mobile No" required (keypress)="keyPress($event)" autofocus>
                   </div>
                   <span *ngIf="isphone"  style="color:red;">Please enter phone number</span>
+                  <span *ngIf="isphonesp"  style="color:red;">Please remove the space from the phone number</span>
 
                   <!-- <div class="form-group mb-0 rupee-symball mt-1">
                     <input type="email" class="form-control1" name="email" [(ngModel)]="otpformdata.email" id="email" placeholder="Email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required autofocus>
@@ -109,6 +110,7 @@
                     <input type="text" class="form-control1" name="password" [(ngModel)]="regiterformdata.password" placeholder="Password" required autofocus>
                   </div>
                   <span *ngIf="ispassword"  style="color:red;">Please enter password</span>
+                  <span *ngIf="ispasssp"  style="color:red;">Space is not allowed in password</span>
                   <div class="form-group mb-0 rupee-symball mt-1">
                     <input type="text" class="form-control1" name="c_password" [(ngModel)]="regiterformdata.c_password" placeholder="Confirm Password" required autofocus>
                   </div>
