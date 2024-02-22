@@ -187,6 +187,8 @@ this.AuthGuardService.sendOtp(this.otpformdata).subscribe({
       return;
       }
 
+      
+      //console.log('isnum - ',isnum);
       if(!this.regiterformdata.phoneNo){
         this.isphone=true;
         return;
@@ -194,7 +196,14 @@ this.AuthGuardService.sendOtp(this.otpformdata).subscribe({
 
         if(this.regiterformdata.phoneNo.indexOf(' ') >= 0){
         this.isphonesp=true;
+        return;
         }
+
+      let isnum = /^\d+$/.test(this.regiterformdata.phoneNo);
+      if(!isnum){
+      this.isphonesp=true;
+      return;
+      }
 
       if(!this.regiterformdata.password){
       this.ispassword=true;

@@ -57,7 +57,7 @@
           <div class="logo mb-4"> <img src="/assets/img/logo.png"></div>
             <div class="add-money text-center">
               <h4>LOGIN</h4>
-              <p>Enter your email to proceed</p>
+              <p>Enter your phone numbner to proceed</p>
               <form action="" method="POST" *ngIf="loginHtml">
              
                   <div class="form-group mb-0 rupee-symball mt-1">
@@ -90,7 +90,7 @@
                     <input type="text" class="form-control1"  maxlength="10" name="phoneNo" [(ngModel)]="regiterformdata.phoneNo" placeholder="Mobile No" required (keypress)="keyPress($event)" autofocus>
                   </div>
                   <span *ngIf="isphone"  style="color:red;">Please enter phone number</span>
-                  <span *ngIf="isphonesp"  style="color:red;">Please remove the space from the phone number</span>
+                  <span *ngIf="isphonesp"  style="color:red;">Space and Characters are not allowed in phone number</span>
 
                   <!-- <div class="form-group mb-0 rupee-symball mt-1">
                     <input type="email" class="form-control1" name="email" [(ngModel)]="otpformdata.email" id="email" placeholder="Email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required autofocus>
