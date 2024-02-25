@@ -31,6 +31,10 @@
     margin-left: 5px;
 }
 
+.request-balance{ padding-bottom: 200px;}
+.card-body.payment-option{ height: 100%;}
+.page-content-wrapper.inner-page-white{ height: 1000px;}
+
 .copy-text button:active {
 	background: #809ce2;
 }

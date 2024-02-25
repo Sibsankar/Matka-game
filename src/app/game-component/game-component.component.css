@@ -19,8 +19,9 @@
 
     background-color: #0b428f;
     color: red;
-    font-weight: 700;
+    font-weight: 700;border-radius: 40px;
 }
+.mat-tab-label{ border:2px solid #000; border-radius:40px;margin: 0 5px;}
 
 .game-close{
   
