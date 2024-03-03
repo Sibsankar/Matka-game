@@ -99,7 +99,7 @@ export class AddMoneyComponent implements OnInit {
             text: v.data.msg,
             icon: "success"
           });
-          this.router.navigate(['/add-money']);
+          this.router.navigate(['/dashboard']);
         }
         
       },

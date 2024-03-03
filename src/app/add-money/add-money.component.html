@@ -23,7 +23,7 @@
                     
                 </div>
                 <div class="row request-balance">
-                <div class="add-money col-12 col-lg-6 ">
+                <div class="add-money col-12 col-lg-6 " *ngIf="qr_code">
                 <div class="label">
                   {{ this.settingsData.upi_1 }}
                 </div>
@@ -33,7 +33,7 @@
                 </div>
               </div>
              
-              <div class="add-money col-12 col-lg-6">
+              <div class="add-money col-12 col-lg-6" *ngIf="qr_code">
                 <div class="label" >
                   {{ this.settingsData.upi_2 }}
                 </div>
@@ -42,6 +42,9 @@
                   <button (click)="copytoClipboardupi2()">Copy</button>
                 </div>
               </div>
+
+
+
               <div class="col-sm-12 text-center request-balance-button">
                 <button *ngIf="qr_code" class="btn btn-success" type="button" (click)="reqbal()">REQUEST BALANCE</button>
               </div>
@@ -60,14 +63,14 @@
                 <div class="add-money mt-3 text-center">
                   <h4>ENTER AMOUNT</h4>
                   <div class="form-group mb-0 rupee-symball">
-                    <input class="form-control1" id="exampleInputText" [(ngModel)]="addMoneyFormData.amount"  type="text" placeholder="Enter digit">
+                    <input class="form-control1" id="exampleInputText" [(ngModel)]="addMoneyFormData.amount"  type="text" placeholder="Enter amount">
                     <img src="assets/img/rupee-icon.png"/>
                   </div>
                 </div>
                 <div class="add-money mt-3 text-center" >
                   <h4>ENTER PHONE NUMBER</h4>
                   <div class="form-group mb-0 rupee-symball">
-                    <input class="form-control1" id="exampleInputText" [(ngModel)]="addMoneyFormData.txn_number" type="text" placeholder="Txn Phone No">
+                    <input class="form-control1" id="exampleInputText" [(ngModel)]="addMoneyFormData.txn_number" type="text" placeholder="Gpay/Phone Pay Phone No">
                   </div>
                 </div>
                 <div class="add-money mt-3 text-center"  >
